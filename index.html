@@ -411,17 +411,21 @@
     }
 
     /* 3. KHUNG CALL TO ACTION (ZALO/MESSENGER): Thu gọn lề cho vừa màn hình nhỏ */
-    .custom-cta-box {
-        padding: 20px 15px !important;
-        margin: 30px 10px !important;
-    }
+    .custom-cta-box { /* Hoặc tên class khung của bạn */
+    padding: 25px 20px !important; /* Giảm padding trên/dưới xuống còn 25px thôi (cũ chắc đang tầm 40px - 50px) */
+    margin: 30px auto;
+    border: 2px dashed #d4a373; /* Ví dụ viền đứt nét màu vintage */
+    border-radius: 12px;
+    background-color: #fdfbf7;
+    text-align: center;
+}
     
     .cta-buttons a {
         display: block !important;
         margin: 10px 0 !important; /* Trên điện thoại cho 2 nút Zalo/Mess xếp chồng lên nhau bấm cho dễ */
     }
 }
-        
+
 .modal-overlay {
     display: none; 
     position: fixed; 
@@ -544,8 +548,8 @@
             <button class="btn-primary" onclick="document.getElementById('product-list').scrollIntoView({behavior: 'smooth'});">XEM SẢN PHẨM NGAY</button>
             
             <div class="search-box-hero">
-                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 25px; color: #888;">🔍</span>
-                <input type="text" id="searchInput" onkeyup="liveSearch()" placeholder="Tìm mẫu tô màu (VD: bơ, rồng...)">
+                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #888;">🔍</span>
+                <input type="text" id="searchInput" onkeyup="liveSearch()" placeholder="Hãy Gõ Bất Cứ Thứ Gì Bạn Thích Vào Đây ..(cute - đáng yêu..vv)">
             </div>
         </div>
     </div>
@@ -581,9 +585,9 @@
 </div>
 
         <!-- KHU VỰC 2: CÂU CHỐT SALE (CALL TO ACTION) -->
-        <div class="custom-cta-box">
-            <h2>Bạn chưa tìm được mẫu nào ưng ý sao?</h2>
-            <p>Đừng lo! Hãy nhắn ngay cho chúng mình để yêu cầu thiết kế và in một phôi 3D dành riêng cho bạn nhé!</p>
+        <div class="custom-cta-box" style="padding: 20px 20px !important; margin: 20px auto !important;">
+            <h2>Bạn chưa tìm thấy mẫu nào ưng ý sao?</h2>
+<p>Đừng lo! Bạn lên ý tưởng — 🦖 <b>Khủng Long Cười</b> sẽ biến ý tưởng đó thành mô hình 3D thực tế cho bạn!</p>
             <div class="cta-buttons">
                 <a href="#" class="btn-zalo">Nhắn qua Zalo</a>
                 <a href="#" class="btn-mess">Nhắn qua Messenger</a>
