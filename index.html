@@ -70,27 +70,25 @@
     font-size: 16px;
 }  
         /* Danh Mục & Bộ Lọc */
-        .category-section { padding: 40px 5% 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .category-section h2 { font-size: 20px; text-transform: uppercase; }
-        .filter-btn {
-            background-color: #A3B59E; color: white; border: none; padding: 8px 16px; 
-            border-radius: 4px; cursor: pointer; font-weight: 500;
-        }
-        .filter-btn.active { background-color: #798B74; }
+     /* 1. Lề chuẩn cho toàn bộ khối nội dung chính (trùng với Header và Hero Banner) */
+.category-section { 
+    padding: 40px 5% 20px 5% !important; 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    flex-wrap: wrap; 
+    width: 100%;
+}
 
-        /* Lưới Sản Phẩm & Sidebar */
-        /* 1. Đóng khung độ rộng tối đa và căn giữa toàn trang */
-/* 1. Trả lại khung layout đầy đặn, không bị co cụm */
-/* Khóa cứng tổng thể khung nội dung, không cho bè ra quá khổ trên màn hình lớn */
-/* Layout chính bên trong */
 .main-layout { 
     display: flex; 
+    padding: 0 5% 60px 5% !important; /* Đồng bộ lề 5% với toàn trang */
     gap: 30px; 
     width: 100%;       
     align-items: flex-start; 
 }
 
-/* Ép lưới sản phẩm luôn hiển thị đúng 4 cột */
+/* 2. Cố định lưới sản phẩm hiển thị đúng 4 cột đều đặn */
 .product-grid { 
     display: grid; 
     grid-template-columns: repeat(4, 1fr); 
@@ -98,10 +96,10 @@
     flex: 3; 
 }
 
-/* Cột sidebar bên phải */
+/* 3. Cột sidebar bên phải */
 .sidebar { 
     flex: 1; 
-    min-width: 240px; 
+    min-width: 250px; 
     text-align: center;
 }
 
