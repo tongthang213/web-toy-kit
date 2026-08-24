@@ -2,7 +2,7 @@
   {
     "id": 1,
     "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "name": "Con Bò",
     "price": "120.000 đ",
     "img": "images/qua_bo.jpg",
     "images": [
@@ -18,7 +18,7 @@
   {
     "id": 2,
     "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "name": "Con Vịt",
     "price": "120.000 đ",
     "img": "images/qua_bo.jpg",
     "images": [
@@ -34,7 +34,7 @@
   {
     "id": 3,
     "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "name": "con Ngan",
     "price": "120.000 đ",
     "img": "images/qua_bo.jpg",
     "images": [
@@ -50,7 +50,7 @@
   {
     "id": 4,
     "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "name": "Con Lợn",
     "price": "120.000 đ",
     "img": "images/qua_bo.jpg",
     "images": [
@@ -66,7 +66,7 @@
   {
     "id": 5,
     "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "name": "Con Chó",
     "price": "120.000 đ",
     "img": "images/qua_bo.jpg",
     "images": [

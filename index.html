@@ -635,50 +635,68 @@
         fetch('settings.json')
             .then(response => response.json())
             .then(settings => {
-                document.querySelector('.logo').innerHTML = settings.shop_name;
-                document.querySelector('.hero-text h1').innerText = settings.hero_title;
-                document.querySelector('.hero-text p').innerText = settings.hero_desc;
-                document.querySelector('.hero img').src = settings.hero_banner_img;
-                document.querySelector('.sidebar img').src = settings.healing_video_thumb;
+                const logoEl = document.querySelector('.logo');
+                if(logoEl) logoEl.innerHTML = settings.shop_name;
+                
+                const heroTitle = document.querySelector('.hero-text h1');
+                if(heroTitle) heroTitle.innerText = settings.hero_title;
+                
+                const heroDesc = document.querySelector('.hero-text p');
+                if(heroDesc) heroDesc.innerText = settings.hero_desc;
+                
+                const heroImg = document.querySelector('.hero img');
+                if(heroImg) heroImg.src = settings.hero_banner_img;
+                
                 window.ZALO_NUMBER = settings.zalo_number;
             })
             .catch(error => console.error("Lỗi tải settings:", error));
 
         // 2. TẢI DANH SÁCH SẢN PHẨM (Từ data.json)
         let productDatabase = []; 
-        const productList = document.getElementById('product-list');
+        let currentDisplayLimit = 8; 
+        let currentActiveData = []; 
 
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
                 productDatabase = data; 
+                currentActiveData = data; // Gán mặc định ban đầu là toàn bộ kho
                 renderUI(productDatabase); 
             })
             .catch(error => console.error("Lỗi tải data:", error));
 
-        // 3. HÀM HIỂN THỊ GIAO DIỆN SẢN PHẨM (CHUẨN CHỈNH, KHÔNG LỖI)
-        // 3. HÀM HIỂN THỊ GIAO DIỆN SẢN PHẨM (DÙNG TRỰC TIẾP KHO GỐC)
-        let currentDisplayLimit = 8; 
-
+        // 3. HÀM HIỂN THỊ GIAO DIỆN SẢN PHẨM (HỖ TRỢ CẢ PHÂN TRANG & TÌM KIẾM)
         function renderUI(data) {
+            currentActiveData = data; 
             const productList = document.getElementById('product-list');
-            productList.innerHTML = '';
+            if(!productList) return;
+            productList.innerHTML = ''; 
 
             const reversedData = [...data].reverse();
             const slicedData = reversedData.slice(0, currentDisplayLimit);
 
-            slicedData.forEach(item => {
-                productList.innerHTML += `
-                    <div class="product-card">
-                        <img src="${item.img}" alt="${item.name}">
-                        <h3>${item.name}</h3>
-                        <p class="price">${item.price}</p>
-                        <button class="btn-primary" style="width:100%; padding: 8px;" onclick="openModal(${item.id})">[ CHI TIẾT SẢN PHẨM ]</button>
+            if (slicedData.length === 0) {
+                productList.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: white; border-radius: 12px;">
+                        <h3 style="color: #333; margin-bottom: 8px;">Không tìm thấy mẫu phù hợp</h3>
+                        <p style="color: #666; margin-bottom: 20px;">Bạn có thể nhắn trực tiếp để xưởng thiết kế riêng nhé!</p>
+                        <a href="https://zalo.me/${window.ZALO_NUMBER || ''}" target="_blank" style="background: #0068FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Nhắn Zalo ngay</a>
                     </div>
                 `;
-            });
+            } else {
+                slicedData.forEach(item => {
+                    productList.innerHTML += `
+                        <div class="product-card">
+                            <img src="${item.img}" alt="${item.name}">
+                            <h3>${item.name}</h3>
+                            <p class="price">${item.price}</p>
+                            <button class="btn-primary" style="width:100%; padding: 8px;" onclick="openModal(${item.id})">[ CHI TIẾT SẢN PHẨM ]</button>
+                        </div>
+                    `;
+                });
+            }
 
-            // Xử lý ẩn hiện nút "Xem thêm" dựa vào tổng số lượng kho
+            // Xử lý ẩn hiện nút "Xem thêm"
             const loadMoreBtn = document.querySelector('.btn-load-more');
             if (loadMoreBtn) {
                 if (currentDisplayLimit >= reversedData.length) {
@@ -688,17 +706,110 @@
                 }
             }
 
-            // Cập nhật tổng số sản phẩm
+            // Cập nhật tổng số sản phẩm hiển thị
             const countSpan = document.getElementById('total-product-count');
             if (countSpan) {
                 countSpan.innerText = data.length; 
             }
         }
 
-        // 4. HÀM XỬ LÝ KHI BẤM NÚT "XEM THÊM" (CỰC KỲ AN TOÀN)
+        // 4. HÀM XỬ LÝ KHI BẤM NÚT "XEM THÊM"
         function loadMoreProducts() {
-            currentDisplayLimit += 8; // Tăng thêm 8
-            renderUI(productDatabase); // Vẽ lại trực tiếp từ productDatabase
+            currentDisplayLimit += 8; // Tăng thêm 8 sản phẩm
+            renderUI(currentActiveData); // Vẽ lại dựa trên tập dữ liệu đang xem/tìm kiếm
+        }
+
+        // 5. HÀM TÌM KIẾM THÔNG MINH (ĐÃ FIX LỖI "BÒ" RA "BƠ")
+        function liveSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) return;
+
+            const keyword = searchInput.value.trim().toLowerCase();
+            if (!keyword) {
+                renderUI(productDatabase);
+                return;
+            }
+            
+            const searchedData = productDatabase.filter(item => {
+                const itemName = item.name.toLowerCase();
+                // So sánh trực tiếp từ khóa người gõ với tên sản phẩm (giữ nguyên dấu để phân biệt bò và bơ)
+                return itemName.includes(keyword);
+            });
+            
+            currentDisplayLimit = 8;
+            renderUI(searchedData);
+        }
+
+        // 6. HÀM MODAL CHI TIẾT SẢN PHẨM
+        const modal = document.getElementById("productModal");
+        
+        function openModal(id) {
+            const product = productDatabase.find(p => p.id === id);
+            if(product) {
+                const imagesList = product.images && product.images.length > 0 ? product.images : [product.img, product.img, product.img];
+                
+                document.getElementById('mainModalImg').src = imagesList[0];
+                document.getElementById('modalTitle').innerText = product.name;
+                document.getElementById('modalPrice').innerText = product.price;
+
+                const descList = document.querySelector('.modal-desc ul');
+                if (descList) {
+                    descList.innerHTML = ''; 
+                    if (Array.isArray(product.desc)) {
+                        product.desc.forEach(line => {
+                            descList.innerHTML += `<li style="margin-bottom: 6px;">${line}</li>`;
+                        });
+                    } else if (product.desc) {
+                        descList.innerHTML = `<li>${product.desc}</li>`;
+                    } else {
+                        descList.innerHTML = `<li>Đang cập nhật mô tả...</li>`;
+                    }
+                }
+
+                const thumbnailsContainer = document.getElementById('modalThumbnails');
+                if(thumbnailsContainer) {
+                    thumbnailsContainer.innerHTML = '';
+                    imagesList.forEach((imgSrc, index) => {
+                        const thumbImg = document.createElement('img');
+                        thumbImg.src = imgSrc;
+                        if(index === 0) thumbImg.classList.add('active'); 
+
+                        thumbImg.addEventListener('click', function() {
+                            document.getElementById('mainModalImg').src = imgSrc;
+                            document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
+                            this.classList.add('active');
+                        });
+                        thumbnailsContainer.appendChild(thumbImg);
+                    });
+                }
+
+                const message = encodeURIComponent(`Chào shop, mình muốn đặt mẫu: ${product.name}`);
+                
+                const zaloBtn = document.getElementById('modalZaloBtn');
+                if(zaloBtn) {
+                    zaloBtn.onclick = function() {
+                        window.open(`https://zalo.me/${window.ZALO_NUMBER || ''}?text=${message}`, '_blank');
+                    };
+                }
+
+                if(modal) {
+                    modal.style.display = "flex";
+                    document.body.style.overflow = "hidden";
+                }
+            }
+        }
+
+        function closeModal() {
+            if (modal) {
+                modal.style.display = "none"; 
+                document.body.style.overflow = "auto"; 
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
         }
     </script>
 </body>
