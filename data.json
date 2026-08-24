@@ -30,5 +30,133 @@
       "1 Phôi 3D cao 10-12cm",
       "1 Vỉ 6 màu Acrylic"
     ]
+  },
+  {
+    "id": 3,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
+  },
+  {
+    "id": 4,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
+  },
+  {
+    "id": 5,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
+  },
+  {
+    "id": 6,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
+  },
+  {
+    "id": 7,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
+  },
+  {
+    "id": 8,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
+  },
+  {
+    "id": 9,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
+  },
+  {
+    "id": 10,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
   }
 ]
