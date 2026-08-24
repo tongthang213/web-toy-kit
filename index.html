@@ -54,7 +54,11 @@
             .hero-text h1 {
                 font-size: 24px;
             }
-        }  
+        } 
+        
+        .logo {
+    color: #FF0000 !important; /* Đổi màu đỏ tươi */
+}
 
         .hero-text h1 {
     color: #5C4033 !important; /* Đổi thành màu đỏ sẫm */
@@ -448,7 +452,7 @@
                         <img src="${item.img}" alt="${item.name}">
                         <h3>${item.name}</h3>
                         <p class="price">${item.price}</p>
-                        <button class="btn-primary" style="width:100%; padding: 8px;" onclick="openModal(${item.id})">[ CHỌN MUA ]</button>
+                        <button class="btn-primary" style="width:100%; padding: 8px;" onclick="openModal(${item.id})">[ CHI TIẾT SẢN PHẨM ]</button>
                     </div>
                 `;
             });
