@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khủng Long Cười - DIY Kit</title>
+    <style>
+        /* CSS Reset & Cấu hình chung */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #F8F5F0; 
+            color: #333; 
+        }
+        
+        /* Header */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 5%; background-color: #F8F5F0;
+        }
+        .logo { font-size: 24px; font-weight: bold; color: #2C3E2D; display: flex; align-items: center; gap: 10px;}
+        .nav a { margin: 0 15px; text-decoration: none; color: #333; font-weight: 500; }
+        .cart-icon { font-size: 24px; cursor: pointer; color: #B07D6B; }
+
+        /* Hero Banner & Thanh tìm kiếm */
+        .hero { 
+            display: flex; gap: 40px; padding: 40px 5%; background-color: #EFEBE4; align-items: center; 
+        }
+        .hero img { width: 55%; border-radius: 8px; object-fit: cover; }
+        .hero-text { width: 45%; }
+        .hero-text h1 { font-size: 32px; color: #2C3E2D; margin-bottom: 15px; line-height: 1.3; }
+        .hero-text p { font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
+        .btn-primary { 
+            background-color: #C17F6A; color: white; border: none; padding: 12px 24px; 
+            font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: 0.3s;
+        }
+        .btn-primary:hover { background-color: #A66855; }
+        
+        .search-box-hero { margin-top: 25px; position: relative; max-width: 90%; }
+        .search-box-hero input {
+            width: 100%; padding: 12px 15px 12px 45px; border: 2px solid #D5C9B3; 
+            border-radius: 25px; font-size: 15px; outline: none; transition: 0.3s; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); background-color: #fff;
+        }
+        .search-box-hero input:focus { border-color: #C17F6A; }
+
+        /* Danh Mục & Bộ Lọc */
+        .category-section { padding: 40px 5% 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .category-section h2 { font-size: 20px; text-transform: uppercase; }
+        .filter-btn {
+            background-color: #A3B59E; color: white; border: none; padding: 8px 16px; 
+            border-radius: 4px; cursor: pointer; font-weight: 500;
+        }
+        .filter-btn.active { background-color: #798B74; }
+
+        /* Lưới Sản Phẩm & Sidebar */
+        .main-layout { display: flex; padding: 0 5% 60px; gap: 30px; flex-wrap: wrap; }
+        .product-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+            gap: 20px; flex: 3; min-width: 60%;
+        }
+        .product-card { background: white; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; margin-bottom: 15px;}
+        .product-card h3 { font-size: 16px; margin-bottom: 5px; }
+        .product-card .price { font-weight: bold; color: #333; margin-bottom: 15px; }
+        
+        .sidebar { flex: 1; min-width: 250px; }
+        .sidebar img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
+        .sidebar h3 { font-size: 18px; text-align: center; margin-bottom: 5px; }
+        .sidebar p { text-align: center; font-size: 14px; color: #666; }
+
+        /* Nút Zalo */
+        .zalo-custom-btn {
+            display: inline-flex; align-items: center; background-color: #0068FF; 
+            color: white !important; text-decoration: none; padding: 12px 25px; 
+            border-radius: 8px; font-weight: bold; font-size: 16px; transition: all 0.3s ease;
+        }
+        .zalo-custom-btn:hover { background-color: #0054cc; transform: translateY(-3px); }
+
+        /* Popup Modal */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background-color: #fff; margin: 5% auto; border-radius: 16px; width: 90%; 
+            max-width: 800px; position: relative; animation: slideDown 0.3s ease-out;
+            display: flex; flex-wrap: wrap; overflow: hidden;
+        }
+        @keyframes slideDown { from {opacity: 0; transform: translateY(-30px);} to {opacity: 1; transform: translateY(0);} }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; color: #999; z-index: 10; }
+        .close-btn:hover { color: #333; }
+        .modal-left { flex: 1; min-width: 300px; padding: 30px; background-color: #fcfcfc; }
+        .modal-left img { width: 100%; border-radius: 12px; object-fit: cover; }
+        .modal-right { flex: 1; min-width: 300px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; }
+        .modal-right h2 { font-size: 24px; color: #3A3A3A; margin-bottom: 10px; }
+        .modal-price { font-size: 22px; color: #C17F6A; font-weight: bold; margin-bottom: 15px; }
+        .modal-desc { margin-bottom: 20px; font-size: 15px; color: #555; line-height: 1.6; }
+        .modal-desc ul { margin-left: 20px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">🐉 Khủng Long Cười</div>
+        <div class="nav">
+            <a href="#">Trang chủ</a> | <a href="#">Sản phẩm</a> | <a href="#">Về chúng tôi</a>
+        </div>
+        <div class="cart-icon">🛒</div>
+    </header>
+
+    <div class="hero">
+        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800" alt="Bộ DIY Kit">
+        <div class="hero-text">
+            <h1>THƯ GIÃN TÂM TRÍ - THỎA SỨC SÁNG TẠO</h1>
+            <p>Trải nghiệm nghệ thuật DIY chữa lành, tự tay tạo đồ decor độc bản.</p>
+            <button class="btn-primary">XEM SẢN PHẨM NGAY</button>
+            
+            <div class="search-box-hero">
+                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #888;">🔍</span>
+                <input type="text" id="searchInput" onkeyup="liveSearch()" placeholder="Tìm mẫu tô màu (VD: bơ, rồng...)">
+            </div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h2>DANH MỤC SÁNG TẠO:</h2>
+        <button class="filter-btn active" onclick="filterProducts('all', this)">[Tất cả]</button>
+    </div>
+
+    <div class="main-layout">
+        <div class="product-grid" id="product-list">
+            <!-- Dữ liệu render động bằng JS từ data.json -->
+        </div>
+
+        <div class="sidebar">
+            <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400" alt="Hướng dẫn tô màu">
+            <h3>GÓC CHỮA LÀNH:</h3>
+            <p>Xem video hướng dẫn tô màu chi tiết</p>
+        </div>
+    </div>
+
+    <!-- Modal (Popup Chi tiết) -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-left">
+                <img id="modal-img" src="" alt="Ảnh sản phẩm">
+            </div>
+            <div class="modal-right">
+                <h2 id="modal-title">Tên sản phẩm</h2>
+                <p class="modal-price" id="modal-price">0 đ</p>
+                <div class="modal-desc" id="modal-desc">
+                    <p><strong>Bộ Kit bao gồm:</strong></p>
+                    <ul>
+                        <li>1 Phôi 3D cao 10-12cm (nhựa an toàn)</li>
+                        <li>1 Vỉ 6 màu Acrylic tươi sáng</li>
+                        <li>2 Cọ vẽ (1 cọ nét, 1 cọ mảng)</li>
+                        <li>Hộp Kraft đóng gói kèm hướng dẫn</li>
+                    </ul>
+                </div>
+                <button class="btn-primary" style="width: 100%; margin-top: 20px; padding: 14px;">THÊM VÀO GIỎ HÀNG</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. TẢI CẤU HÌNH GIAO DIỆN (Từ settings.json)
+        fetch('settings.json')
+            .then(response => response.json())
+            .then(settings => {
+                document.querySelector('.logo').innerHTML = settings.shop_name;
+                document.querySelector('.hero-text h1').innerText = settings.hero_title;
+                document.querySelector('.hero-text p').innerText = settings.hero_desc;
+                document.querySelector('.hero img').src = settings.hero_banner_img;
+                document.querySelector('.sidebar img').src = settings.healing_video_thumb;
+                window.ZALO_NUMBER = settings.zalo_number;
+            })
+            .catch(error => console.error("Lỗi tải settings:", error));
+
+        // 2. TẢI DANH SÁCH SẢN PHẨM (Từ data.json)
+        let productDatabase = []; 
+        const productList = document.getElementById('product-list');
+
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                productDatabase = data; 
+                renderUI(productDatabase); 
+            })
+            .catch(error => console.error("Lỗi tải data:", error));
+
+        // 3. HÀM HIỂN THỊ GIAO DIỆN SẢN PHẨM
+        function renderUI(data) {
+            productList.innerHTML = '';
+            // Đảo ngược mảng để sản phẩm mới thêm (dưới cùng file JSON) hiện lên đầu
+            [...data].reverse().forEach(item => {
+                productList.innerHTML += `
+                    <div class="product-card">
+                        <img src="${item.img}" alt="${item.name}">
+                        <h3>${item.name}</h3>
+                        <p class="price">${item.price}</p>
+                        <button class="btn-primary" style="width:100%; padding: 8px;" onclick="openModal(${item.id})">[ CHỌN MUA ]</button>
+                    </div>
+                `;
+            });
+        }
+
+        // 4. HÀM BỘ LỌC DANH MỤC
+        function filterProducts(category, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+
+            if (category === 'all') {
+                renderUI(productDatabase);
+            } else {
+                const filteredData = productDatabase.filter(item => item.category === category);
+                renderUI(filteredData);
+            }
+        }
+
+        // 5. HÀM TÌM KIẾM THEO THỜI GIAN THỰC & NÚT ZALO
+        function liveSearch() {
+            const keyword = document.getElementById('searchInput').value.toLowerCase();
+            const searchedData = productDatabase.filter(item => item.name.toLowerCase().includes(keyword));
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            
+            if (searchedData.length === 0) {
+                productList.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; background: white; border-radius: 12px;">
+                        <div style="font-size: 20px; margin-bottom: 15px;">🧐</div>
+                        <h3 style="color: #333; margin-bottom: 10px;">Chưa có sẵn mẫu "${document.getElementById('searchInput').value}"</h3>
+                        <p style="color: #666; margin-bottom: 25px;">Gửi ảnh 2D, xưởng sẽ thiết kế và in 3D theo yêu cầu.</p>
+                        <a href="https://zalo.me/${window.ZALO_NUMBER || ''}" target="_blank" class="zalo-custom-btn">
+                            💬 Bấm Zalo Đặt Mẫu Theo Yêu Cầu
+                        </a>
+                    </div>
+                `;
+            } else {
+                renderUI(searchedData);
+            }
+        }
+
+        // 6. LOGIC MODAL (POPUP CHI TIẾT)
+        const modal = document.getElementById("product-modal");
+        function openModal(id) {
+            const product = productDatabase.find(p => p.id === id);
+            if(product) {
+                document.getElementById('modal-img').src = product.img;
+                document.getElementById('modal-title').innerText = product.name;
+                document.getElementById('modal-price').innerText = product.price;
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden";
+            }
+        }
+        function closeModal() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) closeModal();
+        }
+    </script>
+</body>
+</html>
