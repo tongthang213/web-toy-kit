@@ -383,6 +383,45 @@
 }
         /* Popup Modal Mới (Xịn xò & Hỗ trợ nhiều ảnh nhỏ) */
         /* Phủ màn hình và dàn trang popup cực rộng */
+@media (max-width: 768px) {
+    /* 1. SẢN PHẨM: Ép đúng 1 cột duy nhất, to bự, tràn viền cực sang */
+    .product-grid {
+        grid-template-columns: 1fr !important; /* Chỉ 1 sản phẩm 1 hàng */
+        gap: 20px !important;
+        padding: 0 10px;
+    }
+    
+    .product-card {
+        max-width: 100% !important; /* Trải rộng hết màn hình điện thoại */
+    }
+
+    .product-card img {
+        height: 280px !important; /* Ảnh sản phẩm cao và to rõ */
+        object-fit: cover;
+    }
+
+    /* 2. GÓC CHỮA LÀNH (VIDEO): Chuyển thành 2 cột hoặc xếp dọc gọn gàng, không bị bóp méo */
+    .healing-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Mobile cho 2 video 1 hàng ngang cân đối */
+        gap: 12px !important;
+    }
+
+    .healing-item img {
+        height: 100px !important; /* Thu chiều cao ảnh video lại cho lùn xuống, không bị dài thòng lòng */
+    }
+
+    /* 3. KHUNG CALL TO ACTION (ZALO/MESSENGER): Thu gọn lề cho vừa màn hình nhỏ */
+    .custom-cta-box {
+        padding: 20px 15px !important;
+        margin: 30px 10px !important;
+    }
+    
+    .cta-buttons a {
+        display: block !important;
+        margin: 10px 0 !important; /* Trên điện thoại cho 2 nút Zalo/Mess xếp chồng lên nhau bấm cho dễ */
+    }
+}
+        
 .modal-overlay {
     display: none; 
     position: fixed; 
