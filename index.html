@@ -592,7 +592,7 @@
 </header>
 
     <div class="hero">
-        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800" alt="Bộ DIY Kit">
+        <img src="images/banner-moi.jpg" alt="Bộ DIY Kit">
         <div class="hero-text">
             <h1>THƯ GIÃN TÂM TRÍ - THỎA SỨC SÁNG TẠO</h1>
             <p>Trải nghiệm nghệ thuật DIY chữa lành, tự tay tạo đồ decor độc bản.</p>
@@ -636,39 +636,49 @@
 </div>
 
         <!-- KHU VỰC 2: CÂU CHỐT SALE (CALL TO ACTION) -->
-        <div class="custom-cta-box" style="padding: 20px 20px !important; margin: 20px auto !important;">
-            <h2>Bạn chưa tìm thấy mẫu nào ưng ý sao?</h2>
-<p>Đừng lo! Bạn lên ý tưởng — 🦖 <b>Khủng Long Cười</b> sẽ biến ý tưởng đó thành mô hình 3D thực tế cho bạn!</p>
-            <div class="cta-buttons">
-                <a href="#" class="btn-zalo">Nhắn qua Zalo</a>
-                <a href="#" class="btn-mess">Nhắn qua Messenger</a>
-            </div>
-        </div>
+<div class="custom-cta-box" style="padding: 20px 20px !important; margin: 20px auto !important;">
+    <h2>Bạn chưa tìm thấy mẫu nào ưng ý sao?</h2>
+    <p>Đừng lo! Bạn lên ý tưởng — 🦖 <b>Khủng Long Cười</b> sẽ biến ý tưởng đó thành mô hình 3D thực tế cho bạn!</p>
+    <div class="cta-buttons" style="margin-top: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+        <!-- NÚT ZALO -->
+        <a href="https://zalo.me/0833333832" target="_blank" style="background: #0068FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+            Nhắn Zalo ngay
+        </a>
+        
+        <!-- NÚT MESSENGER -->
+        <a href="https://m.me/bebom213/" target="_blank" style="background: #0084FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+            Nhắn Messenger Ngay
+        </a>
+    </div>
+</div>
 
         <!-- KHU VỰC 3: GÓC CHỮA LÀNH (HÀNG NGANG 4 VIDEO) -->
         <div class="healing-horizontal-container">
-            <h3 style="font-weight: bold; margin-bottom: 20px; color: #333;">GÓC CHỮA LÀNH: <span style="font-size: 14px; font-weight: normal; color: #666;">Xem video đập hộp và hướng dẫn tô màu chi tiết</span></h3>
+            <h3 style="font-weight: bold; margin-bottom: 20px; color: #333;">GÓC CHỮA LÀNH : <span style="font-size: 14px; font-weight: normal; color: #666;"></h3>
             
             <!-- Ví dụ sửa lại đường dẫn src cho đúng với tên file ảnh thực tế trong thư mục của bạn: -->
 <div class="healing-grid">
-    <!-- Video 1 -->
-    <a href="#" class="healing-item">
+    <!-- Video 1: Gắn link YouTube -->
+    <a href="https://www.youtube.com/watch?v=LINK_VIDEO_1" target="_blank" class="healing-item">
         <img src="images/video1.jpg" alt="Video 1">
         <p>Hướng dẫn tô màu Khủng Long</p>
     </a>
-    <!-- Video 2 -->
-    <a href="#" class="healing-item">
-        <img src="img/video2.jpg" alt="Video 2">
+    
+    <!-- Video 2: Gắn link TikTok -->
+    <a href="https://www.tiktok.com/@kenh_cua_ban/video/LINK_VIDEO_2" target="_blank" class="healing-item">
+        <img src="images/images/video2.jpg" alt="Video 2">
         <p>Cách pha màu Acrylic cơ bản</p>
     </a>
+    
     <!-- Video 3 -->
-    <a href="#" class="healing-item">
-        <img src="img/video3.jpg" alt="Video 3">
+    <a href="https://www.youtube.com/watch?v=LINK_VIDEO_3" target="_blank" class="healing-item">
+        <img src="images/images/video3.jpg" alt="Video 3">
         <p>Mẹo tô viền không bị lem</p>
     </a>
+    
     <!-- Video 4 -->
-    <a href="#" class="healing-item">
-        <img src="img/video4.jpg" alt="Video 4">
+    <a href="https://www.tiktok.com/@kenh_cua_ban/video/LINK_VIDEO_4" target="_blank" class="healing-item">
+        <img src="images/images/video4.jpg" alt="Video 4">
         <p>Phủ bóng Epoxy hậu kỳ</p>
     </a>
 </div>
@@ -726,7 +736,7 @@
     </div>
 
     <script>
-        // 1. TẢI CẤU HÌNH GIAO DIỆN (Từ settings.json)
+        // 1. TẢI CẤU HÌNH GIAO DIỆN
         fetch('settings.json')
             .then(response => response.json())
             .then(settings => {
@@ -739,12 +749,15 @@
                 const heroDesc = document.querySelector('.hero-text p');
                 if(heroDesc) heroDesc.innerText = settings.hero_desc;
                 
+                // Dòng này cực kỳ quan trọng để gán ảnh banner vào thẻ img trong giao diện:
                 const heroImg = document.querySelector('.hero img');
                 if(heroImg) heroImg.src = settings.hero_banner_img;
                 
                 window.ZALO_NUMBER = settings.zalo_number;
+                window.FB_PAGE = settings.facebook_page;
             })
             .catch(error => console.error("Lỗi tải settings:", error));
+
 
         // 2. TẢI DANH SÁCH SẢN PHẨM (Từ data.json)
         let productDatabase = []; 
@@ -755,12 +768,12 @@
             .then(response => response.json())
             .then(data => {
                 productDatabase = data; 
-                currentActiveData = data; // Gán mặc định ban đầu là toàn bộ kho
+                currentActiveData = data; 
                 renderUI(productDatabase); 
             })
             .catch(error => console.error("Lỗi tải data:", error));
 
-        // 3. HÀM HIỂN THỊ GIAO DIỆN SẢN PHẨM (HỖ TRỢ CẢ PHÂN TRANG & TÌM KIẾM)
+        // 3. HÀM HIỂN THỊ GIAO DIỆN SẢN PHẨM 
         function renderUI(data) {
             currentActiveData = data; 
             const productList = document.getElementById('product-list');
@@ -771,26 +784,25 @@
             const slicedData = reversedData.slice(0, currentDisplayLimit);
 
             if (slicedData.length === 0) {
+                // ĐÃ SỬA CÚ PHÁP Ở ĐÂY:
                 productList.innerHTML = `
                     <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: white; border-radius: 12px;">
                         <h3 style="color: #333; margin-bottom: 8px;">Không tìm thấy mẫu phù hợp</h3>
                         <p style="color: #666; margin-bottom: 20px;">Bạn có thể nhắn trực tiếp để xưởng thiết kế riêng nhé!</p>
-                        <a href="https://zalo.me/${window.ZALO_NUMBER || ''}" target="_blank" style="background: #0068FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Nhắn Zalo ngay</a>
+                        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                            <a href="https://zalo.me/${window.ZALO_NUMBER || '0833333832'}" target="_blank" style="background: #0068FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Nhắn Zalo ngay</a>
+                            <a href="https://m.me/bebom213" target="_blank" style="background: #0084FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Nhắn Messenger Ngay</a>
+                        </div>
                     </div>
                 `;
             } else {
                 slicedData.forEach((item, index) => {
-                    // 1. Đếm số lượng ảnh: ưu tiên đếm trong mảng images, nếu không có thì tính là 1 ảnh chính
                     let imgCount = 1;
                     if (item.images && Array.isArray(item.images) && item.images.length > 0) {
                         imgCount = item.images.length;
                     }
 
-                    // 2. Random lượt mua từ 10 đến 200 (Dựa vào ID sản phẩm để số lượng không bị thay đổi loạn xạ khi bấm xem thêm)
                     const randomSold = 10 + ((item.id * 37) % 191); 
-
-                    // 4. Tạo mã sản phẩm tự động theo định dạng SP 001, SP 002...
-                    // Định dạng số thành dạng 3 chữ số (VD: 1 thành 001)
                     const formattedId = String(item.id).padStart(3, '0');
                     const productCode = `SP ${formattedId}`;
 
@@ -812,17 +824,15 @@
                 });
             }
 
-            // Xử lý ẩn hiện nút "Xem thêm"
             const loadMoreBtn = document.querySelector('.btn-load-more');
             if (loadMoreBtn) {
                 if (currentDisplayLimit >= reversedData.length) {
-                    loadMoreBtn.style.display = 'none'; // Hết hàng thì ẩn nút
+                    loadMoreBtn.style.display = 'none'; 
                 } else {
-                    loadMoreBtn.style.display = 'inline-block'; // Còn thì hiện nút
+                    loadMoreBtn.style.display = 'inline-block'; 
                 }
             }
 
-            // Cập nhật tổng số sản phẩm hiển thị
             const countSpan = document.getElementById('total-product-count');
             if (countSpan) {
                 countSpan.innerText = data.length; 
@@ -831,11 +841,11 @@
 
         // 4. HÀM XỬ LÝ KHI BẤM NÚT "XEM THÊM"
         function loadMoreProducts() {
-            currentDisplayLimit += 8; // Tăng thêm 8 sản phẩm
-            renderUI(currentActiveData); // Vẽ lại dựa trên tập dữ liệu đang xem/tìm kiếm
+            currentDisplayLimit += 8; 
+            renderUI(currentActiveData); 
         }
 
-        // 5. HÀM TÌM KIẾM THÔNG MINH (ĐÃ FIX LỖI "BÒ" RA "BƠ")
+        // 5. HÀM TÌM KIẾM THÔNG MINH
         function liveSearch() {
             const searchInput = document.getElementById('searchInput');
             if (!searchInput) return;
@@ -848,7 +858,6 @@
             
             const searchedData = productDatabase.filter(item => {
                 const itemName = item.name.toLowerCase();
-                // So sánh trực tiếp từ khóa người gõ với tên sản phẩm (giữ nguyên dấu để phân biệt bò và bơ)
                 return itemName.includes(keyword);
             });
             
@@ -904,7 +913,15 @@
                 const zaloBtn = document.getElementById('modalZaloBtn');
                 if(zaloBtn) {
                     zaloBtn.onclick = function() {
-                        window.open(`https://zalo.me/${window.ZALO_NUMBER || ''}?text=${message}`, '_blank');
+                        window.open(`https://zalo.me/${window.ZALO_NUMBER || '0833333832'}?text=${message}`, '_blank');
+                    };
+                }
+
+                const fbBtn = document.getElementById('modalFbBtn');
+                if(fbBtn) {
+                    fbBtn.onclick = function() {
+                        // Sửa link thành link fb_page hoặc cứng như yêu cầu:
+                        window.open(window.FB_PAGE || 'https://m.me/bebom213', '_blank');
                     };
                 }
 
