@@ -12,5 +12,61 @@
     "name": "[Ảnh Khủng L] Kit Rồng Con Chữa Lành", 
     "price": "135.000 đ", 
     "img": "https://images.unsplash.com/photo-1618365908648-e71bd5716cba?w=400" 
+  },
+  { 
+    "id": 3, 
+    "category": "plant", 
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
+    "price": "120.000 đ", 
+    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  },
+  { 
+    "id": 4, 
+    "category": "plant", 
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
+    "price": "120.000 đ", 
+    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  },
+  { 
+    "id": 5, 
+    "category": "plant", 
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
+    "price": "120.000 đ", 
+    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  },
+  { 
+    "id": 6, 
+    "category": "plant", 
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
+    "price": "120.000 đ", 
+    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  },
+  { 
+    "id": 7, 
+    "category": "plant", 
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
+    "price": "120.000 đ", 
+    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  },
+  { 
+    "id": 8, 
+    "category": "plant", 
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
+    "price": "120.000 đ", 
+    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  },
+  { 
+    "id": 9, 
+    "category": "plant", 
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
+    "price": "120.000 đ", 
+    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  },
+  { 
+    "id": 10, 
+    "category": "plant", 
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
+    "price": "120.000 đ", 
+    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
   }
 ]
