@@ -197,6 +197,16 @@
         font-size: 20px !important;
     }
 }
+/* Trên điện thoại, ẩn toàn bộ menu và icon giỏ hàng, chỉ giữ lại Logo + Tên */
+@media screen and (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+    header {
+        justify-content: flex-start !important; /* Cân đối lại logo nằm gọn bên trái */
+        padding: 15px 5%;
+    }
+}
         /* Popup Modal Mới (Xịn xò & Hỗ trợ nhiều ảnh nhỏ) */
         /* Phủ màn hình và dàn trang popup cực rộng */
 .modal-overlay {
@@ -300,12 +310,16 @@
 <body>
 
     <header>
-        <div class="logo">🐉 Khủng Long Cười</div>
-        <div class="nav">
-            <a href="#">Trang chủ</a> | <a href="#">Sản phẩm</a> | <a href="#">Về chúng tôi</a>
-        </div>
-        <div class="cart-icon">🛒</div>
-    </header>
+    <div class="logo">🐉 Khủng Long Cười</div>
+    
+    <!-- Gắn class desktop-only vào đây để ẩn menu trên điện thoại -->
+    <div class="nav desktop-only">
+        <a href="#">Trang chủ</a> | <a href="#">Sản phẩm</a> | <a href="#">Về chúng tôi</a>
+    </div>
+    
+    <!-- Gắn class desktop-only vào đây để ẩn icon giỏ hàng trên điện thoại -->
+    <div class="cart-icon desktop-only">🛒</div>
+</header>
 
     <div class="hero">
         <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800" alt="Bộ DIY Kit">
