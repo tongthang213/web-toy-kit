@@ -1,1 +1,5 @@
 *.exe
+build/
+dist/
+*.py
+*.spec
