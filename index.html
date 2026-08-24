@@ -81,28 +81,27 @@
         /* Lưới Sản Phẩm & Sidebar */
         /* 1. Đóng khung độ rộng tối đa và căn giữa toàn trang */
 /* 1. Trả lại khung layout đầy đặn, không bị co cụm */
+/* Khóa cứng tổng thể khung nội dung, không cho bè ra quá khổ trên màn hình lớn */
+/* Layout chính bên trong */
 .main-layout { 
     display: flex; 
-    padding: 0 5% 60px; 
     gap: 30px; 
-    width: 100%;       /* Cho phép trải dài toàn màn hình với lề 5% */
-    max-width: none;   /* Bỏ giới hạn cũ đi */
+    width: 100%;       
     align-items: flex-start; 
 }
 
-/* 2. Ép lưới sản phẩm chiếm đa số không gian và hiển thị chuẩn 4 cột */
+/* Ép lưới sản phẩm luôn hiển thị đúng 4 cột */
 .product-grid { 
     display: grid; 
-    grid-template-columns: repeat(4, 1fr); /* Khóa cứng luôn 4 cột cho đẹp */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px; 
     flex: 3; 
-    width: 100%;
 }
 
-/* 3. Cột sidebar bên phải */
+/* Cột sidebar bên phải */
 .sidebar { 
     flex: 1; 
-    min-width: 250px; 
+    min-width: 240px; 
     text-align: center;
 }
 
@@ -343,6 +342,8 @@
     </style>
 </head>
 <body>
+    <!-- BỌC TOÀN BỘ NỘI DUNG WEB VÀO ĐÂY -->
+    <div style="max-width: 1400px; margin: 0 auto; background-color: #F8F5F0; box-shadow: 0 0 20px rgba(0,0,0,0.05);">
 
     <header>
     <div class="logo">🦖 Khủng Long Cười - DIY 3D Tô Màu</div>
@@ -370,13 +371,16 @@
         </div>
     </div>
 
+    <!-- THÊM THẺ BỌC NÀY Ở NGOÀI CÙNG -->
+<div style="max-width: 1320px; margin: 0 auto; padding: 0 20px;">
+
     <div class="category-section">
-    <h2>DANH MỤC SẢN PHẨM:</h2>
-    <!-- Thay chữ [Tất cả] bằng thẻ chứa số lượng tự động cập nhật -->
-    <button class="filter-btn active" onclick="filterProducts('all', this)">
-        [ <span id="total-product-count">0</span> sản phẩm ]
-    </button>
-</div>
+        <h2>DANH MỤC SẢN PHẨM:</h2>
+        <!-- Thay chữ [Tất cả] bằng thẻ chứa số lượng tự động cập nhật -->
+        <button class="filter-btn active" onclick="filterProducts('all', this)">
+            [ <span id="total-product-count">0</span> sản phẩm ]
+        </button>
+    </div>
 
     <div class="main-layout">
         <div class="product-grid" id="product-list">
@@ -393,6 +397,8 @@
             </a>
         </div>
     </div>
+
+</div> <!-- THÊM THẺ ĐÓNG DIV NÀY Ở DƯỚI CÙNG -->
 
     <!-- Modal (Popup Chi tiết sản phẩm mới) -->
     <div class="modal-overlay" id="productModal">
