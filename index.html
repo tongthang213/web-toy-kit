@@ -127,6 +127,57 @@
     width: 100%;
 }
 
+    /* Khung bọc ảnh sản phẩm để làm điểm tựa định vị góc trái/phải */
+.product-card .img-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* 1. Huy hiệu số lượng ảnh ở góc trên cùng bên phải */
+.badge-image-count {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
+/* 2. Nhãn lượt mua ở góc trên cùng bên trái */
+.badge-sold-count {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+/* 4 & 5. Mã sản phẩm và Giá tiền màu đỏ */
+.product-code {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.product-card .price {
+    color: #e63946 !important; /* Đổi thành màu đỏ bắt mắt */
+    font-weight: bold;
+    font-size: 16px;
+}
+
 ./* 1. KHUNG TỔNG: Đẩy 2 khối ra xa nhau, chừa chỗ cho sản phẩm */
         .main-layout { 
             display: flex; 
@@ -598,28 +649,29 @@
         <div class="healing-horizontal-container">
             <h3 style="font-weight: bold; margin-bottom: 20px; color: #333;">GÓC CHỮA LÀNH: <span style="font-size: 14px; font-weight: normal; color: #666;">Xem video đập hộp và hướng dẫn tô màu chi tiết</span></h3>
             
-            <div class="healing-grid">
-                <!-- Video 1 -->
-                <a href="#" class="healing-item">
-                    <img src="qua_bo.jpg" alt="Video 1">
-                    <p>Hướng dẫn tô màu Khủng Long</p>
-                </a>
-                <!-- Video 2 -->
-                <a href="#" class="healing-item">
-                    <img src="qua_bo.jpg" alt="Video 2">
-                    <p>Cách pha màu Acrylic cơ bản</p>
-                </a>
-                <!-- Video 3 -->
-                <a href="#" class="healing-item">
-                    <img src="qua_bo.jpg" alt="Video 3">
-                    <p>Mẹo tô viền không bị lem</p>
-                </a>
-                <!-- Video 4 -->
-                <a href="#" class="healing-item">
-                    <img src="qua_bo.jpg" alt="Video 4">
-                    <p>Phủ bóng Epoxy hậu kỳ</p>
-                </a>
-            </div>
+            <!-- Ví dụ sửa lại đường dẫn src cho đúng với tên file ảnh thực tế trong thư mục của bạn: -->
+<div class="healing-grid">
+    <!-- Video 1 -->
+    <a href="#" class="healing-item">
+        <img src="images/video1.jpg" alt="Video 1">
+        <p>Hướng dẫn tô màu Khủng Long</p>
+    </a>
+    <!-- Video 2 -->
+    <a href="#" class="healing-item">
+        <img src="img/video2.jpg" alt="Video 2">
+        <p>Cách pha màu Acrylic cơ bản</p>
+    </a>
+    <!-- Video 3 -->
+    <a href="#" class="healing-item">
+        <img src="img/video3.jpg" alt="Video 3">
+        <p>Mẹo tô viền không bị lem</p>
+    </a>
+    <!-- Video 4 -->
+    <a href="#" class="healing-item">
+        <img src="img/video4.jpg" alt="Video 4">
+        <p>Phủ bóng Epoxy hậu kỳ</p>
+    </a>
+</div>
         </div>
 
     </div>
@@ -727,13 +779,34 @@
                     </div>
                 `;
             } else {
-                slicedData.forEach(item => {
+                slicedData.forEach((item, index) => {
+                    // 1. Đếm số lượng ảnh: ưu tiên đếm trong mảng images, nếu không có thì tính là 1 ảnh chính
+                    let imgCount = 1;
+                    if (item.images && Array.isArray(item.images) && item.images.length > 0) {
+                        imgCount = item.images.length;
+                    }
+
+                    // 2. Random lượt mua từ 10 đến 200 (Dựa vào ID sản phẩm để số lượng không bị thay đổi loạn xạ khi bấm xem thêm)
+                    const randomSold = 10 + ((item.id * 37) % 191); 
+
+                    // 4. Tạo mã sản phẩm tự động theo định dạng SP 001, SP 002...
+                    // Định dạng số thành dạng 3 chữ số (VD: 1 thành 001)
+                    const formattedId = String(item.id).padStart(3, '0');
+                    const productCode = `SP ${formattedId}`;
+
                     productList.innerHTML += `
                         <div class="product-card">
-                            <img src="${item.img}" alt="${item.name}">
-                            <h3>${item.name}</h3>
-                            <p class="price">${item.price}</p>
-                            <button class="btn-primary" style="width:100%; padding: 8px;" onclick="openModal(${item.id})">[ CHI TIẾT SẢN PHẨM ]</button>
+                            <div class="img-container">
+                                <span class="badge-sold-count">Đã bán ${randomSold}</span>
+                                <span class="badge-image-count">${imgCount} ảnh</span>
+                                <img src="${item.img}" alt="${item.name}">
+                            </div>
+                            <div class="product-info" style="padding-top: 10px;">
+                                <div class="product-code">Mã: ${productCode}</div>
+                                <h3>${item.name}</h3>
+                                <p class="price">${item.price}</p>
+                                <button class="btn-primary" style="width:100%; padding: 8px;" onclick="openModal(${item.id})">[ CHI TIẾT SẢN PHẨM ]</button>
+                            </div>
                         </div>
                     `;
                 });
