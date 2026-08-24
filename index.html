@@ -43,6 +43,19 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); background-color: #fff;
         }
         .search-box-hero input:focus { border-color: #C17F6A; }
+        @media screen and (max-width: 768px) {
+  .hero {
+    flex-direction: column; /* Đưa ảnh lên trên, chữ xuống dưới trên màn hình nhỏ */
+    padding: 20px 5%;
+  }
+  .hero img, .hero-text {
+    width: 100% !important; /* Cho phép cả ảnh và chữ giãn rộng toàn bộ màn hình */
+  }
+  .hero-text h1 {
+    font-size: 24px; /* Thu nhỏ tiêu đề lại một chút cho vừa mắt trên mobile */
+  }
+}   
+
 
         /* Danh Mục & Bộ Lọc */
         .category-section { padding: 40px 5% 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
