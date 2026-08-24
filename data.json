@@ -1,72 +1,34 @@
 [
-  { 
-    "id": 1, 
-    "category": "plant", 
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  {
+    "id": 1,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
   },
-  { 
-    "id": 2, 
-    "category": "dino", 
-    "name": "[Ảnh Khủng L] Kit Rồng Con Chữa Lành", 
-    "price": "135.000 đ", 
-    "img": "https://images.unsplash.com/photo-1618365908648-e71bd5716cba?w=400" 
-  },
-  { 
-    "id": 3, 
-    "category": "plant", 
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
-  },
-  { 
-    "id": 4, 
-    "category": "plant", 
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
-  },
-  { 
-    "id": 5, 
-    "category": "plant", 
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
-  },
-  { 
-    "id": 6, 
-    "category": "plant", 
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
-  },
-  { 
-    "id": 7, 
-    "category": "plant", 
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
-  },
-  { 
-    "id": 8, 
-    "category": "plant", 
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
-  },
-  { 
-    "id": 9, 
-    "category": "plant", 
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
-  },
-  { 
-    "id": 10, 
-    "category": "plant", 
-    "name": " Bộ Kit DIY 3D Tô Màu - Khủng Long Ngộ Nghĩnh (Mã K01)", 
-    "price": "120.000 đ", 
-    "img": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" 
+  {
+    "id": 2,
+    "category": "plant",
+    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+    "price": "120.000 đ",
+    "img": "images/qua_bo.jpg",
+    "images": [
+      "images/qua_bo.jpg",
+      "images/qua_bo_goc_2.jpg",
+      "images/qua_bo_goc_3.jpg"
+    ],
+    "desc": [
+      "1 Phôi 3D cao 10-12cm",
+      "1 Vỉ 6 màu Acrylic"
+    ]
   }
 ]

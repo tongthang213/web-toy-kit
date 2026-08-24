@@ -60,23 +60,50 @@
     color: #FF0000 !important; /* Đổi màu đỏ tươi */
 }
 
-        /* Khung thẻ sản phẩm và khóa cứng ảnh */
+        /* Khung card bo góc, viền mỏng, căn trái giống hệt mẫu */
         .product-card { 
             background: white; 
-            padding: 15px; 
-            border-radius: 8px; 
-            text-align: center; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            padding: 12px; 
+            border-radius: 12px; 
+            border: 1px solid #f0f0f0;
+            text-align: left; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+            display: flex;
+            flex-direction: column;
         }
+
+        /* KHUNG ẢNH DỌC 3:4 CỰC NÉT CHUẨN E-COMMERCE */
         .product-card img { 
             width: 100% !important; 
-            height: 220px !important;    /* Khóa cứng chiều cao cho ảnh lùn gọn, vuông vức */
-            object-fit: cover !important; /* Cắt ảnh vừa khít khung, không bị dài thòng */
-            border-radius: 6px; 
-            margin-bottom: 12px;
+            height: auto !important;       
+            aspect-ratio: 3 / 4 !important; /* Dáng dọc hoàn hảo, không bị bé tí nữa */
+            object-fit: cover !important;   
+            border-radius: 8px; 
+            margin-bottom: 15px;
         }
-        .product-card h3 { font-size: 16px; margin-bottom: 5px; }
-        .product-card .price { font-weight: bold; color: #333; margin-bottom: 15px; }
+
+        .product-card h3 { 
+            font-size: 15px; 
+            font-weight: bold; 
+            color: #333;
+            margin-bottom: 8px; 
+        }
+
+        .product-card .price { 
+            font-weight: bold; 
+            color: #666; 
+            font-size: 14px;
+            margin-bottom: 15px; 
+        }
+
+        /* Nút bấm tràn viền, đẩy xuống đáy card */
+        .product-card .btn-primary {
+            width: 100%;
+            margin-top: auto; 
+            border-radius: 8px;
+            padding: 12px;
+            background-color: #A06973; /* Lấy màu trầm giống hệt ảnh mẫu của bạn */
+        }
         
         .hero-text h1 {
     color: #5C4033 !important; /* Đổi thành màu đỏ sẫm */
