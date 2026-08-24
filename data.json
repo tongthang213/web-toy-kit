@@ -1,162 +1,167 @@
 [
-  {
-    "id": 1,
-    "category": "plant",
-    "name": "Bộ Kít DIY Siêu Nhân #001",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 2,
-    "category": "plant",
-    "name": "Con Vịt",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 3,
-    "category": "plant",
-    "name": "con Ngan",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 4,
-    "category": "plant",
-    "name": "Con Lợn",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 5,
-    "category": "plant",
-    "name": "Con Chó",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 6,
-    "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 7,
-    "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 8,
-    "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 9,
-    "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  },
-  {
-    "id": 10,
-    "category": "plant",
-    "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
-    "price": "120.000 đ",
-    "img": "images/qua_bo.jpg",
-    "images": [
-      "images/qua_bo.jpg",
-      "images/qua_bo_goc_2.jpg",
-      "images/qua_bo_goc_3.jpg"
-    ],
-    "desc": [
-      "1 Phôi 3D cao 10-12cm",
-      "1 Vỉ 6 màu Acrylic"
-    ]
-  }
+    {
+        "id": 1,
+        "category": "plant",
+        "name": "Bộ Kít DIY Siêu Nhân #001",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 2,
+        "category": "plant",
+        "name": "Con Vịt",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 3,
+        "category": "plant",
+        "name": "con Ngan",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 4,
+        "category": "plant",
+        "name": "Con Lợn",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 5,
+        "category": "plant",
+        "name": "Con Chó",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 6,
+        "category": "plant",
+        "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 7,
+        "category": "plant",
+        "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 8,
+        "category": "plant",
+        "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 9,
+        "category": "plant",
+        "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+        "price": "120.000 đ",
+        "img": "images/qua_bo.jpg",
+        "images": [
+            "images/qua_bo.jpg",
+            "images/qua_bo_goc_2.jpg",
+            "images/qua_bo_goc_3.jpg"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    },
+    {
+        "id": 10,
+        "category": "plant",
+        "name": "Bộ Kit DIY Vịt Con Đáng Yêu #1",
+        "price": "120.000 đ",
+        "img": "images/sp_10/1.jpg",
+        "images": [
+            "images/sp_10/1.jpg",
+            "images/sp_10/2.jpg",
+            "images/sp_10/3.jpg",
+            "images/sp_10/4.jpg",
+            "images/sp_10/5.jpg",
+            "images/sp_10/a1.jpg",
+            "images/sp_10/a2.jpg",
+            "images/sp_10/b1.png"
+        ],
+        "desc": [
+            "1 Phôi 3D cao 10-12cm",
+            "1 Vỉ 6 màu Acrylic"
+        ]
+    }
 ]
