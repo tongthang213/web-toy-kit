@@ -361,9 +361,12 @@
     </div>
 
     <div class="category-section">
-        <h2>DANH MỤC SÁNG TẠO:</h2>
-        <button class="filter-btn active" onclick="filterProducts('all', this)">[Tất cả]</button>
-    </div>
+    <h2>DANH MỤC SẢN PHẨM:</h2>
+    <!-- Thay chữ [Tất cả] bằng thẻ chứa số lượng tự động cập nhật -->
+    <button class="filter-btn active" onclick="filterProducts('all', this)">
+        [ <span id="total-product-count">0</span> sản phẩm ]
+    </button>
+</div>
 
     <div class="main-layout">
         <div class="product-grid" id="product-list">
@@ -443,7 +446,7 @@
             })
             .catch(error => console.error("Lỗi tải data:", error));
 
-        // 3. HÀM HIỂN THỊ GIAO DIỆN SẢN PHẨM
+        // 3. HÀM HIỂN THỊ GIAO DIỆN SẢN PHẨM & TỰ ĐỘNG ĐẾM SỐ LƯỢNG
         function renderUI(data) {
             productList.innerHTML = '';
             [...data].reverse().forEach(item => {
@@ -456,6 +459,13 @@
                     </div>
                 `;
             });
+
+            // Tự động cập nhật số lượng vào thẻ có id="total-product-count"
+            const countSpan = document.getElementById('total-product-count');
+            if (countSpan) {
+                // Hiển thị tổng số lượng sản phẩm có trong database
+                countSpan.innerText = productDatabase.length; 
+            }
         }
 
         // 4. HÀM BỘ LỌC DANH MỤC
@@ -500,24 +510,20 @@
         function openModal(id) {
             const product = productDatabase.find(p => p.id === id);
             if(product) {
-                // Xác định danh sách ảnh (nếu sau này thêm mảng images, hiện tại dùng chung item.img)
                 const imagesList = product.images && product.images.length > 0 ? product.images : [product.img, product.img, product.img];
                 
-                // Đặt ảnh chính mặc định là ảnh đầu tiên
                 document.getElementById('mainModalImg').src = imagesList[0];
                 document.getElementById('modalTitle').innerText = product.name;
                 document.getElementById('modalPrice').innerText = product.price;
 
-                // Tạo dải ảnh thumbnail bên dưới
                 const thumbnailsContainer = document.getElementById('modalThumbnails');
                 thumbnailsContainer.innerHTML = '';
                 
                 imagesList.forEach((imgSrc, index) => {
                     const thumbImg = document.createElement('img');
                     thumbImg.src = imgSrc;
-                    if(index === 0) thumbImg.classList.add('active'); // Mặc định chọn ảnh đầu
+                    if(index === 0) thumbImg.classList.add('active'); 
 
-                    // Sự kiện click vào ảnh nhỏ để phóng to lên trên
                     thumbImg.addEventListener('click', function() {
                         document.getElementById('mainModalImg').src = imgSrc;
                         document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
@@ -541,5 +547,6 @@
             if (event.target == modal) closeModal();
         }
     </script>
+        
 </body>
 </html>
