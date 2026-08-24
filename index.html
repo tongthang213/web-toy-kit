@@ -76,10 +76,39 @@
         .product-card h3 { font-size: 16px; margin-bottom: 5px; }
         .product-card .price { font-weight: bold; color: #333; margin-bottom: 15px; }
         
-        .sidebar { flex: 1; min-width: 250px; }
-        .sidebar img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
-        .sidebar h3 { font-size: 18px; text-align: center; margin-bottom: 5px; }
-        .sidebar p { text-align: center; font-size: 14px; color: #666; }
+        /* Tối ưu khung ảnh video dọc chuẩn Reels/TikTok */
+.sidebar { 
+    flex: 1; 
+    min-width: 250px; 
+    text-align: center;
+}
+
+.sidebar img { 
+    width: 100%; 
+    max-width: 280px;      /* Giới hạn độ rộng vừa phải để trông gọn gàng */
+    height: 480px;         /* Ép chiều cao theo đúng tỷ lệ video dọc 9:16 */
+    object-fit: cover;     /* Cắt ảnh vừa khít khung không bị méo */
+    border-radius: 16px;   /* Bo tròn góc mềm mại như video thực tế */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Thêm hiệu ứng nổi nhẹ */
+    margin-bottom: 12px; 
+    transition: transform 0.3s ease;
+}
+
+.sidebar img:hover {
+    transform: translateY(-5px); /* Hiệu ứng nhấc nhẹ khi di chuột vào */
+}
+
+.sidebar h3, .sidebar .healing-title { 
+    font-size: 18px; 
+    font-weight: bold;
+    color: #2C3E2D;
+    margin-bottom: 5px; 
+}
+
+.sidebar p, .sidebar .healing-desc { 
+    font-size: 14px; 
+    color: #666; 
+}
 
         /* Nút Zalo */
         .zalo-custom-btn {
@@ -139,6 +168,33 @@
         top: 10px;
         right: 15px;
         font-size: 26px;
+    }
+}
+/* Tối ưu hóa Header riêng cho Mobile */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px 4% !important;
+    }
+    
+    .logo {
+        font-size: 18px !important; /* Thu nhỏ chữ logo lại để không bị rớt dòng */
+        gap: 6px !important;
+    }
+
+    .logo img {
+        height: 24px !important; /* Giới hạn kích thước icon khủng long cho cân đối */
+    }
+
+    .nav {
+        font-size: 13px !important;
+    }
+
+    .nav a {
+        margin: 0 6px !important; /* Thu hẹp khoảng cách menu trên điện thoại */
+    }
+
+    .cart-icon {
+        font-size: 20px !important;
     }
 }
         /* Popup Modal Mới (Xịn xò & Hỗ trợ nhiều ảnh nhỏ) */
