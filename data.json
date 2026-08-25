@@ -4,11 +4,12 @@
         "category": "plant",
         "name": "Bộ Kít DIY Siêu Nhân #001",
         "price": "120.000 đ",
-        "img": "images/qua_bo.jpg",
+        "img": "images/sp_1/1.png",
         "images": [
-            "images/qua_bo.jpg",
-            "images/qua_bo_goc_2.jpg",
-            "images/qua_bo_goc_3.jpg"
+            "images/sp_1/1.png",
+            "images/sp_1/2.jpg",
+            "images/sp_1/3.jpg",
+            "images/sp_1/b1.png"
         ],
         "desc": [
             "1 Phôi 3D cao 10-12cm",
