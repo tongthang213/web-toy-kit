@@ -2,7 +2,7 @@
     {
         "id": 1,
         "category": "plant",
-        "name": "Bộ Kít DIY BABY DUCK #001",
+        "name": "Bộ Kít DIY- BABY DUCK #001",
         "price": "120.000 đ",
         "img": "images/sp_1/1.png",
         "images": [
@@ -19,7 +19,7 @@
     {
         "id": 2,
         "category": "plant",
-        "name": "Bộ Kít DIY CHÚ CHÓ SHIBA SAMURAI #002",
+        "name": "Bộ Kít DIY- CHÚ CHÓ SHIBA SAMURAI #002",
         "price": "120.000 đ",
         "img": "images/sp_2/1.png",
         "images": [
@@ -37,13 +37,13 @@
     {
         "id": 3,
         "category": "plant",
-        "name": "con Ngan",
+        "name": "Bộ Kít DIY - BEAT CAT #003",
         "price": "120.000 đ",
-        "img": "images/qua_bo.jpg",
+        "img": "images/sp_3/1.png",
         "images": [
-            "images/qua_bo.jpg",
-            "images/qua_bo_goc_2.jpg",
-            "images/qua_bo_goc_3.jpg"
+            "images/sp_3/1.png",
+            "images/sp_3/2.png",
+            "images/sp_3/3.jpg"
         ],
         "desc": [
             "1 Phôi 3D cao 10-12cm",
