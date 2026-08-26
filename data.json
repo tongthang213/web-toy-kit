@@ -46,46 +46,48 @@
             "images/sp_3/3.jpg"
         ],
         "desc": [
-            "1 Phôi 3D cao 10-12cm",
+            "1 Phôi 3D cao 12-15 cm",
             "1 Vỉ 6 màu Acrylic"
         ]
     },
     {
         "id": 4,
         "category": "plant",
-        "name": "Con Lợn",
+        "name": "Bộ Kít DIY - FUNY CAT #004",
         "price": "120.000 đ",
-        "img": "images/qua_bo.jpg",
+        "img": "images/sp_4/1.png",
         "images": [
-            "images/qua_bo.jpg",
-            "images/qua_bo_goc_2.jpg",
-            "images/qua_bo_goc_3.jpg"
+            "images/sp_4/1.png",
+            "images/sp_4/2.png",
+            "images/sp_4/3.png",
+            "images/sp_4/4.png"
         ],
         "desc": [
-            "1 Phôi 3D cao 10-12cm",
+            "1 Phôi 3D cao 12-15cm",
             "1 Vỉ 6 màu Acrylic"
         ]
     },
     {
         "id": 5,
         "category": "plant",
-        "name": "Con Chó",
+        "name": "Bộ Kít DIY - FUNY CAT #005",
         "price": "120.000 đ",
-        "img": "images/qua_bo.jpg",
+        "img": "images/sp_5/1.png",
         "images": [
-            "images/qua_bo.jpg",
-            "images/qua_bo_goc_2.jpg",
-            "images/qua_bo_goc_3.jpg"
+            "images/sp_5/1.png",
+            "images/sp_5/2.png",
+            "images/sp_5/3.png",
+            "images/sp_5/4.png"
         ],
         "desc": [
-            "1 Phôi 3D cao 10-12cm",
+            "1 Phôi 3D cao 12-15 cm",
             "1 Vỉ 6 màu Acrylic"
         ]
     },
     {
         "id": 6,
         "category": "plant",
-        "name": "[Ảnh Quả Bơ] Bộ Kit Quả Bơ Sáng Tạo",
+        "name": "Bộ Kít DIY - FUNY CAT #006",
         "price": "120.000 đ",
         "img": "images/qua_bo.jpg",
         "images": [
@@ -94,7 +96,7 @@
             "images/qua_bo_goc_3.jpg"
         ],
         "desc": [
-            "1 Phôi 3D cao 10-12cm",
+            "1 Phôi 3D cao 12-15 cm",
             "1 Vỉ 6 màu Acrylic"
         ]
     },
