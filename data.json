@@ -89,11 +89,13 @@
         "category": "plant",
         "name": "Bộ Kít DIY - FUNY CAT #006",
         "price": "120.000 đ",
-        "img": "images/qua_bo.jpg",
+        "img": "images/sp_6/1.png",
         "images": [
-            "images/qua_bo.jpg",
-            "images/qua_bo_goc_2.jpg",
-            "images/qua_bo_goc_3.jpg"
+            "images/sp_6/1.png",
+            "images/sp_6/2.png",
+            "images/sp_6/3.png",
+            "images/sp_6/4.png",
+            "images/sp_6/5.png"
         ],
         "desc": [
             "1 Phôi 3D cao 12-15 cm",
