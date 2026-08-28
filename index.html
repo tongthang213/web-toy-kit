@@ -305,7 +305,7 @@
 
                     <!-- 3. Khu vực phát Video nằm DƯỚI CÙNG cột trái -->
                     <div id="bottomVideoContainer">
-                        <div style="font-size: 14px; font-weight: bold; color: #2C3E2D; margin-bottom: 8px;">🎬 Video </div>
+                        <div style="font-size: 14px; font-weight: bold; color: #2C3E2D; margin-bottom: 8px;">🎬 Video Hướng Dẫn:</div>
                         <div id="bottomIframeBox" style="width: 100%; height: 260px; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid #eaeaea;">
                             <!-- Iframe YouTube sẽ chui vào đây -->
                         </div>
@@ -434,18 +434,30 @@
             renderUI(currentActiveData); 
         }
 
+        // Hàm hỗ trợ loại bỏ dấu tiếng Việt
+        function removeVietnameseTones(str) {
+            if (!str) return "";
+            return str.normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+        }
+
+        // Hàm tìm kiếm đã nâng cấp (hỗ trợ không dấu)
         function liveSearch() {
             const searchInput = document.getElementById('searchInput');
             if (!searchInput) return;
 
-            const keyword = searchInput.value.trim().toLowerCase();
+            // Lấy từ khóa, chuyển thành chữ thường và XÓA DẤU
+            const keyword = removeVietnameseTones(searchInput.value.trim().toLowerCase());
+            
             if (!keyword) {
                 renderUI(productDatabase);
                 return;
             }
             
             const searchedData = productDatabase.filter(item => {
-                const itemName = item.name.toLowerCase();
+                // Lấy tên sản phẩm, chuyển thành chữ thường và XÓA DẤU
+                const itemName = removeVietnameseTones(item.name.toLowerCase());
                 return itemName.includes(keyword);
             });
             
