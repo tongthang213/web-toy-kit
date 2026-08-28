@@ -128,7 +128,7 @@
         .healing-item:hover { transform: translateY(-5px); }
         .healing-item p { font-size: 14px; font-weight: bold; color: #333; margin: 0; }
 
-        /* Tối ưu hóa tuyệt đối cho Mobile */
+        /* Tối ưu hóa cho Mobile */
         @media screen and (max-width: 768px) {
             header { justify-content: flex-start !important; padding: 15px 5% !important; }
             .logo { font-size: 18px !important; gap: 6px !important; }
@@ -142,7 +142,7 @@
             .cta-buttons a { display: block !important; margin: 10px 0 !important; }
         }
 
-        /* Modal (Popup Chi tiết sản phẩm mới) */
+        /* Modal (Popup Chi tiết sản phẩm mới - Fix cuộn dọc) */
         .modal-overlay {
             display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
             width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); 
@@ -150,41 +150,51 @@
         }
         .modal-container {
             background-color: #fff; border-radius: 16px; width: 90vw !important;    
-            max-width: 1200px !important; height: 85vh !important;  
+            max-width: 1100px !important; height: 90vh !important;  
             position: relative; animation: slideDown 0.3s ease-out;
-            padding: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); display: flex; flex-direction: column;
+            padding: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); 
+            display: flex; flex-direction: column; overflow-y: auto; /* Cho cuộn dọc khi popup dài */
         }
         .modal-close { 
             position: absolute; top: 15px; right: 25px; font-size: 32px; font-weight: bold; cursor: pointer; color: #777; z-index: 10; 
         }
         .modal-close:hover { color: #000; }
-        .modal-body { display: flex; gap: 40px; align-items: stretch; height: 100%; margin-top: 10px; }
         
-        .modal-gallery { width: 55%; display: flex; flex-direction: column; }
-        .modal-main-img-box { width: 100%; height: 420px; }
+        .modal-body { display: flex; gap: 30px; align-items: flex-start; margin-top: 10px; }
+        
+        /* Cột bên trái: Rộng 50%, chứa ảnh và video xếp dọc */
+        .modal-gallery { width: 50%; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+        
+        .modal-main-img-box { width: 100%; height: 380px; }
         .modal-main-img-box img { 
             width: 100%; height: 100%; border-radius: 10px; object-fit: contain; 
-            background-color: #fafafa; border: 1px solid #eaeaea; 
+            background-color: #fafafa; border: 1px solid #eaeaea; display: block;
         }
 
-        /* Căn chỉnh ảnh/video nhỏ thumbnail bên dưới */
+        /* Dải ảnh nhỏ bên dưới ảnh chính */
         .modal-thumbnails {
-            display: flex; gap: 12px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px; align-items: flex-start;
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; align-items: flex-start;
         }
         .modal-thumbnails img {
             width: 75px; height: 75px; object-fit: cover; border-radius: 8px; 
-            cursor: pointer; border: 2px solid transparent; transition: all 0.2s;
+            cursor: pointer; border: 2px solid transparent; transition: all 0.2s; flex-shrink: 0;
         }
         .modal-thumbnails img:hover, .modal-thumbnails img.active { border-color: #C17F6A; }
 
-        .modal-info { width: 42%; display: flex; flex-direction: column; justify-content: flex-start; }
-        .modal-info h2 { font-size: 26px; color: #2C3E2D; margin-bottom: 15px; line-height: 1.4; }
-        .modal-price { font-size: 24px; color: #C17F6A; font-weight: bold; margin-bottom: 20px; }
-        .modal-desc { margin-bottom: 30px; font-size: 16px; color: #555; line-height: 1.6; }
-        .modal-desc ul { padding-left: 20px; margin-top: 10px; }
+        /* Khung Video nằm dưới cùng của cột trái */
+        #bottomVideoContainer {
+            width: 100%; margin-top: 10px; display: none;
+        }
+        
+        /* Cột bên phải: Chứa thông tin chữ */
+        .modal-info { width: 48%; display: flex; flex-direction: column; justify-content: flex-start; }
+        .modal-info h2 { font-size: 26px; color: #2C3E2D; margin-bottom: 12px; line-height: 1.4; }
+        .modal-price { font-size: 22px; color: #C17F6A; font-weight: bold; margin-bottom: 15px; }
+        .modal-desc { margin-bottom: 25px; font-size: 15px; color: #555; line-height: 1.6; }
+        .modal-desc ul { padding-left: 20px; margin-top: 5px; }
         
         @media screen and (max-width: 768px) {
-            .modal-container { width: 98vw !important; height: 92vh !important; padding: 15px !important; overflow-y: auto; }
+            .modal-container { width: 98vw !important; height: 92vh !important; padding: 15px !important; }
             .modal-body { flex-direction: column !important; gap: 15px !important; }
             .modal-gallery, .modal-info { width: 100% !important; }
             .modal-main-img-box { height: 260px !important; }
@@ -248,12 +258,11 @@
             <h3 style="font-weight: bold; margin-bottom: 20px; color: #f10707;">GÓC CHỮA LÀNH :</h3>
             <div class="healing-grid">
                 <div class="healing-item">
-                    <iframe src="https://www.youtube.com/embed/NM1cikzWYUQ" style="width: 100%; aspect-ratio: 1/1; border-radius: 8px; border: none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    <a href="https://www.youtube.com/watch?v=NM1cikzWYUQ" target="_blank" style="text-decoration: none; color: inherit; display: block; margin-top: 10px;">
+                    <iframe src="https://www.youtube.com/watch?v=mvCwnMg-iZc&list=RDmvCwnMg-iZc&start_radio=1" style="width: 100%; aspect-ratio: 1/1; border-radius: 8px; border: none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <a href="https://www.youtube.com/watch?v=mvCwnMg-iZc&list=RDmvCwnMg-iZc&start_radio=1" target="_blank" style="text-decoration: none; color: inherit; display: block; margin-top: 10px;">
                         <p style="margin: 0; font-weight: bold;">Hướng dẫn tô màu Khủng Long</p>
                     </a>
                 </div>
-                <!-- Cập nhật mã YouTube/TikTok tương ứng vào 3 ô bên dưới nhé -->
                 <div class="healing-item">
                     <iframe src="https://www.youtube.com/embed/MÃ_VIDEO_2" style="width: 100%; aspect-ratio: 1/1; border-radius: 8px; border: none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     <a href="https://www.tiktok.com/@kenh_cua_ban/video/LINK_VIDEO_2" target="_blank" style="text-decoration: none; color: inherit; display: block; margin-top: 10px;">
@@ -276,22 +285,30 @@
         </div>
 </div> 
 
-    <!-- Modal (Popup Chi tiết sản phẩm mới - BỔ SUNG KHU VỰC VIDEO) -->
+    <!-- Modal (Popup Chi tiết sản phẩm mới - BỔ SUNG KHU VỰC VIDEO Ở ĐÁY) -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-container">
             <span class="modal-close" onclick="closeModal()">&times;</span>
             <div class="modal-body">
-                <!-- Cột bên trái: Ảnh chính & dải ảnh nhỏ -->
+                
+                <!-- Cột bên trái: Ảnh chính -> Dải ảnh nhỏ -> Video ở đáy -->
                 <div class="modal-gallery">
+                    <!-- 1. Ảnh to chính -->
                     <div class="modal-main-img-box">
-                        <!-- Nơi chứa ảnh chính -->
                         <img id="mainModalImg" src="" alt="Ảnh sản phẩm chính">
-                        <!-- Nơi chứa video (ẩn theo mặc định) -->
-                        <div id="mainModalVideoContainer" style="display: none; flex-direction: column; height: 100%;"></div>
                     </div>
-                    <!-- Dải ảnh nhỏ (Thumbnail) -->
+                    
+                    <!-- 2. Dải ảnh nhỏ -->
                     <div class="modal-thumbnails" id="modalThumbnails">
-                        <!-- Tự động load ảnh nhỏ & nút Play video qua JS -->
+                        <!-- Tự động load qua JS -->
+                    </div>
+
+                    <!-- 3. Khu vực phát Video nằm DƯỚI CÙNG cột trái -->
+                    <div id="bottomVideoContainer">
+                        <div style="font-size: 14px; font-weight: bold; color: #2C3E2D; margin-bottom: 8px;">🎬 Video Hướng Dẫn:</div>
+                        <div id="bottomIframeBox" style="width: 100%; height: 260px; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid #eaeaea;">
+                            <!-- Iframe YouTube sẽ chui vào đây -->
+                        </div>
                     </div>
                 </div>
 
@@ -300,13 +317,7 @@
                     <h2 id="modalTitle">Tên sản phẩm</h2>
                     <div class="modal-price" id="modalPrice">0 đ</div>
                     <div class="modal-desc">
-                        <strong>Bộ Kit bao gồm:</strong>
-                        <ul>
-                            <li>1 Phối 3D cao 10-12cm (nhựa an toàn)</li>
-                            <li>1 Vỉ 6 màu Acrylic tươi sáng</li>
-                            <li>2 Cọ vẽ (1 cọ nét, 1 cọ mảng)</li>
-                            <li>Hộp Kraft đóng gói kèm hướng dẫn</li>
-                        </ul>
+                        <!-- Mô tả sản phẩm -->
                     </div>
 
                     <div class="modal-actions" style="display: flex; gap: 10px; margin-top: 20px;">
@@ -371,10 +382,6 @@
                     <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: white; border-radius: 12px;">
                         <h3 style="color: #333; margin-bottom: 8px;">Không tìm thấy mẫu phù hợp</h3>
                         <p style="color: #666; margin-bottom: 20px;">Bạn có thể nhắn trực tiếp để xưởng thiết kế riêng nhé!</p>
-                        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                            <a href="https://zalo.me/${window.ZALO_NUMBER || '0833333832'}" target="_blank" style="background: #0068FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Nhắn Zalo ngay</a>
-                            <a href="https://m.me/bebom213" target="_blank" style="background: #0084FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Nhắn Messenger Ngay</a>
-                        </div>
                     </div>
                 `;
             } else {
@@ -415,6 +422,7 @@
                 }
             }
 
+            // [ĐÃ FIX 1]: Hiển thị lại bộ đếm tổng số sản phẩm 
             const countSpan = document.getElementById('total-product-count');
             if (countSpan) {
                 countSpan.innerText = data.length; 
@@ -445,7 +453,6 @@
             renderUI(searchedData);
         }
 
-        // --- HÀM HỖ TRỢ XỬ LÝ LINK YOUTUBE ---
         function getYouTubeID(url) {
             if(!url) return null;
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -453,7 +460,6 @@
             return (match && match[2].length === 11) ? match[2] : null;
         }
 
-        // HÀM MODAL CHI TIẾT SẢN PHẨM (ĐÃ NÂNG CẤP XỬ LÝ VIDEO)
         const modal = document.getElementById("productModal");
         
         function openModal(id) {
@@ -461,28 +467,30 @@
             if(product) {
                 const imagesList = product.images && product.images.length > 0 ? product.images : [product.img, product.img, product.img];
                 
-                // Reset trạng thái hiển thị: luôn show ảnh chính ban đầu, ẩn video
                 const mainImg = document.getElementById('mainModalImg');
-                const videoContainer = document.getElementById('mainModalVideoContainer');
+                const bottomVideoContainer = document.getElementById('bottomVideoContainer');
+                const bottomIframeBox = document.getElementById('bottomIframeBox');
+                
                 mainImg.src = imagesList[0];
-                mainImg.style.display = 'block';
-                videoContainer.style.display = 'none';
-                videoContainer.innerHTML = ''; // Xóa iframe rác
+                bottomVideoContainer.style.display = 'none';
+                bottomIframeBox.innerHTML = '';
 
                 document.getElementById('modalTitle').innerText = product.name;
                 document.getElementById('modalPrice').innerText = product.price;
 
-                const descList = document.querySelector('.modal-desc ul');
-                if (descList) {
-                    descList.innerHTML = ''; 
+                const descContainer = document.querySelector('.modal-desc');
+                if (descContainer) {
                     if (Array.isArray(product.desc)) {
+                        let htmlContent = '<strong>Bộ Kit bao gồm:</strong><ul style="padding-left: 20px; margin-top: 5px;">';
                         product.desc.forEach(line => {
-                            descList.innerHTML += `<li style="margin-bottom: 6px;">${line}</li>`;
+                            htmlContent += `<li style="margin-bottom: 6px;">${line}</li>`;
                         });
+                        htmlContent += '</ul>';
+                        descContainer.innerHTML = htmlContent;
                     } else if (product.desc) {
-                        descList.innerHTML = `<li>${product.desc}</li>`;
+                        descContainer.innerHTML = product.desc;
                     } else {
-                        descList.innerHTML = `<li>Đang cập nhật mô tả...</li>`;
+                        descContainer.innerHTML = '<strong>Bộ Kit bao gồm:</strong><p>Đang cập nhật mô tả...</p>';
                     }
                 }
 
@@ -490,91 +498,23 @@
                 if(thumbnailsContainer) {
                     thumbnailsContainer.innerHTML = '';
 
-                    // 1. Nếu có link video, chèn nút Video lên ĐẦU TIÊN
+                    // [ĐÃ FIX 2]: Tự động hiện khung video ở dưới cùng nếu có link, và XÓA luôn việc tạo thumbnail giả.
                     if (product.video_url) {
                         const videoId = getYouTubeID(product.video_url);
                         if (videoId) {
-                            const videoWrapper = document.createElement('div');
-                            videoWrapper.style.display = 'flex';
-                            videoWrapper.style.flexDirection = 'column';
-                            videoWrapper.style.alignItems = 'center';
-                            videoWrapper.style.cursor = 'pointer';
-                            videoWrapper.style.flexShrink = '0'; // Giữ fix kích thước
-
-                            const thumbDiv = document.createElement('div');
-                            thumbDiv.style.width = '75px';
-                            thumbDiv.style.height = '75px';
-                            thumbDiv.style.position = 'relative';
-                            
-                            // Lấy thumbnail xịn từ YouTube
-                            const videoThumbImg = document.createElement('img');
-                            videoThumbImg.src = `https://img.youtube.com/vi/${videoId}/default.jpg`;
-                            videoThumbImg.style.width = '100%';
-                            videoThumbImg.style.height = '100%';
-                            videoThumbImg.style.objectFit = 'cover';
-                            videoThumbImg.style.borderRadius = '8px';
-                            videoThumbImg.style.border = '2px solid transparent';
-                            videoThumbImg.style.transition = 'all 0.2s';
-                            
-                            // Nút Play
-                            const playIcon = document.createElement('div');
-                            playIcon.innerHTML = '▶';
-                            playIcon.style.position = 'absolute';
-                            playIcon.style.top = '50%';
-                            playIcon.style.left = '50%';
-                            playIcon.style.transform = 'translate(-50%, -50%)';
-                            playIcon.style.color = 'white';
-                            playIcon.style.fontSize = '24px';
-                            playIcon.style.textShadow = '0 2px 4px rgba(0,0,0,0.8)';
-
-                            const textVideo = document.createElement('span');
-                            textVideo.innerText = 'Xem Video';
-                            textVideo.style.fontSize = '11px';
-                            textVideo.style.fontWeight = 'bold';
-                            textVideo.style.marginTop = '4px';
-                            textVideo.style.color = '#333';
-
-                            thumbDiv.appendChild(videoThumbImg);
-                            thumbDiv.appendChild(playIcon);
-                            videoWrapper.appendChild(thumbDiv);
-                            videoWrapper.appendChild(textVideo);
-
-                            // Sự kiện BẤM ĐỂ XEM VIDEO
-                            videoWrapper.onclick = function() {
-                                // Gán màu viền
-                                document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
-                                videoThumbImg.classList.add('active');
-
-                                // Chuyển đổi hiển thị
-                                mainImg.style.display = 'none';
-                                videoContainer.style.display = 'flex';
-                                videoContainer.innerHTML = `
-                                    <h3 style="font-size: 18px; color: #2C3E2D; margin-bottom: 10px; text-align: center;">${product.name}</h3>
-                                    <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
-                                            style="flex: 1; width: 100%; border-radius: 8px; border: none;" 
-                                            allow="autoplay; encrypted-media" allowfullscreen>
-                                    </iframe>
-                                `;
-                            };
-                            
-                            thumbnailsContainer.appendChild(videoWrapper);
+                            bottomVideoContainer.style.display = 'block';
+                            bottomIframeBox.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}" style="width: 100%; height: 100%; border: none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
                         }
                     }
 
-                    // 2. Chèn danh sách ảnh nhỏ
+                    // Chèn danh sách ảnh nhỏ bình thường (Chỉ có ảnh)
                     imagesList.forEach((imgSrc, index) => {
                         const thumbImg = document.createElement('img');
                         thumbImg.src = imgSrc;
-                        // Nếu không có video thì ảnh đầu tiên nhận viền đỏ cam
-                        if(!product.video_url && index === 0) thumbImg.classList.add('active'); 
+                        if(index === 0) thumbImg.classList.add('active'); 
 
                         thumbImg.onclick = function() {
-                            // Chuyển về hiển thị ảnh bình thường
                             mainImg.src = imgSrc;
-                            mainImg.style.display = 'block';
-                            videoContainer.style.display = 'none';
-                            videoContainer.innerHTML = ''; // Tắt iframe để dừng phát video
-                            
                             document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
                             this.classList.add('active');
                         };
@@ -607,8 +547,7 @@
         function closeModal() {
             if (modal) {
                 // Xóa video để tránh nó phát tiếng ngầm lúc đóng popup
-                document.getElementById('mainModalVideoContainer').innerHTML = '';
-                
+                document.getElementById('bottomIframeBox').innerHTML = '';
                 modal.style.display = "none"; 
                 document.body.style.overflow = "auto"; 
             }
