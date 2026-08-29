@@ -257,7 +257,7 @@
     {
         "id": 10,
         "category": "plant",
-        "name": "Bộ Kit DIY Vịt Con Đáng Yêu #1",
+        "name": "Bộ Kit DIY Vịt Con Đáng Yêu #1 ádasdasdas",
         "price": "185.000 đ",
         "img": "images/sp_10/1.jpg",
         "images": [
@@ -277,6 +277,7 @@
             "1 Vỉ 6 màu Acrylic",
             "1 Phôi 3D cao 10-12cm",
             "1 Vỉ 6 màu Acrylic"
-        ]
+        ],
+        "video_url": ""
     }
 ]
