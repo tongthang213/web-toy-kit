@@ -532,17 +532,26 @@
                         }
                     }
 
-                    // Chèn danh sách ảnh nhỏ bình thường (Chỉ có ảnh)
+                    // Chèn danh sách ảnh nhỏ với cơ chế Hover tự đổi ảnh cực mượt
                     imagesList.forEach((imgSrc, index) => {
                         const thumbImg = document.createElement('img');
                         thumbImg.src = imgSrc;
                         if(index === 0) thumbImg.classList.add('active'); 
 
+                        // Đổi sự kiện từ 'onclick' sang 'onmouseover' (trỏ chuột vào là ảnh tự đổi)
+                        thumbImg.onmouseover = function() {
+                            mainImg.src = imgSrc;
+                            document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
+                            this.classList.add('active');
+                        };
+                        
+                        // Phòng hờ cho điện thoại: Vẫn cho phép bấm chạm (click) để đổi ảnh
                         thumbImg.onclick = function() {
                             mainImg.src = imgSrc;
                             document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
                             this.classList.add('active');
                         };
+
                         thumbnailsContainer.appendChild(thumbImg);
                     });
                 }
