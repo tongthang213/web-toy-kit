@@ -365,6 +365,17 @@
                 productDatabase = data; 
                 currentActiveData = data; 
                 renderUI(productDatabase); 
+                
+                // --- BỔ SUNG: KIỂM TRA LINK ĐỂ TỰ ĐỘNG MỞ POPUP ---
+                const urlParams = new URLSearchParams(window.location.search);
+                const idFromUrl = urlParams.get('id');
+                if (idFromUrl) {
+                    // Ép kiểu id về dạng số (Number) để tìm kiếm chính xác
+                    setTimeout(() => {
+                        openModal(Number(idFromUrl));
+                    }, 100); // Chờ 1 chút xíu để giao diện render xong ảnh rồi mới bật
+                }
+                // --------------------------------------------------
             })
             .catch(error => console.error("Lỗi tải data:", error));
 
@@ -378,13 +389,14 @@
             const slicedData = reversedData.slice(0, currentDisplayLimit);
 
             if (slicedData.length === 0) {
-                productList.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: white; border-radius: 12px;">
-                        <h3 style="color: #333; margin-bottom: 8px;">Không tìm thấy mẫu phù hợp</h3>
-                        <p style="color: #666; margin-bottom: 20px;">Bạn có thể nhắn trực tiếp để xưởng thiết kế riêng nhé!</p>
-                    </div>
-                `;
-            } else {
+            productList.innerHTML = `
+                <div style="grid-column: 1 / -1; width: 100%; padding: 50px 20px; background: #fff; border-radius: 16px; text-align: center; border: 2px dashed #C17F6A; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                    <div style="font-size: 45px; margin-bottom: 15px;">🦖❓</div>
+                    <h3 style="color: #e63946; margin-bottom: 10px; font-size: 22px;">Rất tiếc, chưa có mẫu nào khớp từ khóa này!</h3>
+                    <p style="color: #666; font-size: 16px; margin-bottom: 0;">Đừng lo! Bạn có thể nhắn trực tiếp để xưởng lên bản vẽ 3D và in riêng theo yêu cầu nhé!</p>
+                </div>
+            `;
+        } else {
                 slicedData.forEach((item, index) => {
                     let imgCount = 1;
                     if (item.images && Array.isArray(item.images) && item.images.length > 0) {
@@ -477,6 +489,7 @@
         function openModal(id) {
             const product = productDatabase.find(p => p.id === id);
             if(product) {
+                history.pushState(null, '', '?id=' + id);
                 const imagesList = product.images && product.images.length > 0 ? product.images : [product.img, product.img, product.img];
                 
                 const mainImg = document.getElementById('mainModalImg');
@@ -562,6 +575,7 @@
                 document.getElementById('bottomIframeBox').innerHTML = '';
                 modal.style.display = "none"; 
                 document.body.style.overflow = "auto"; 
+                istory.pushState(null, '', window.location.pathname);
             }
         }
 
