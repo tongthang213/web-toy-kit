@@ -204,6 +204,18 @@
             .modal-close { top: 10px; right: 15px; font-size: 26px; }
         }
         .social-icons a:hover { transform: translateY(-4px); }
+
+        /* Hiệu ứng phóng to mượt mà cho ảnh chính */
+#mainModalImg {
+    transition: transform 0.3s ease, object-fit 0.3s ease;
+    cursor: zoom-in;
+}
+#mainModalImg.zoomed {
+    transform: scale(1.6); /* Phóng to hẳn 1.6 lần, soi cực nét */
+    cursor: zoom-out;
+    z-index: 50;
+    position: relative;
+}   
     </style>
 </head>
 <body>
@@ -497,8 +509,14 @@
                 const bottomIframeBox = document.getElementById('bottomIframeBox');
                 
                 mainImg.src = imagesList[0];
+                mainImg.classList.remove('zoomed'); // Reset trạng thái zoom
                 bottomVideoContainer.style.display = 'none';
                 bottomIframeBox.innerHTML = '';
+
+                // Click vào ảnh chính để Bật/Tắt chế độ Zoom to hết cỡ
+                mainImg.onclick = function() {
+                    this.classList.toggle('zoomed');
+                };
 
                 document.getElementById('modalTitle').innerText = product.name;
                 document.getElementById('modalPrice').innerText = product.price;
@@ -523,7 +541,6 @@
                 if(thumbnailsContainer) {
                     thumbnailsContainer.innerHTML = '';
 
-                    // [ĐÃ FIX 2]: Tự động hiện khung video ở dưới cùng nếu có link, và XÓA luôn việc tạo thumbnail giả.
                     if (product.video_url) {
                         const videoId = getYouTubeID(product.video_url);
                         if (videoId) {
@@ -532,24 +549,28 @@
                         }
                     }
 
-                    // Chèn danh sách ảnh nhỏ với cơ chế Hover tự đổi ảnh cực mượt
+                    // Chèn danh sách ảnh nhỏ: Hover đổi ảnh nhanh + Click đổi ảnh và Zoom to hoành tráng
                     imagesList.forEach((imgSrc, index) => {
                         const thumbImg = document.createElement('img');
                         thumbImg.src = imgSrc;
                         if(index === 0) thumbImg.classList.add('active'); 
 
-                        // Đổi sự kiện từ 'onclick' sang 'onmouseover' (trỏ chuột vào là ảnh tự đổi)
+                        // 1. Trỏ chuột vào (Hover): Tự động đổi ảnh chính siêu nhanh, đưa về size chuẩn
                         thumbImg.onmouseover = function() {
                             mainImg.src = imgSrc;
+                            mainImg.classList.remove('zoomed');
                             document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
                             this.classList.add('active');
                         };
                         
-                        // Phòng hờ cho điện thoại: Vẫn cho phép bấm chạm (click) để đổi ảnh
+                        // 2. Click vào thumbnail: Đổi ảnh và KÍCH HOẠT ZOOM TO LUÔN
                         thumbImg.onclick = function() {
                             mainImg.src = imgSrc;
                             document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
                             this.classList.add('active');
+                            
+                            // Phóng to hoành tráng
+                            mainImg.classList.add('zoomed');
                         };
 
                         thumbnailsContainer.appendChild(thumbImg);
