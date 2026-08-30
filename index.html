@@ -216,6 +216,19 @@
     z-index: 50;
     position: relative;
 }   
+
+/* Giao diện khung Zoom ảnh độc lập không lo đè layout */
+#customPhotoZoomModal {
+    display: none; position: fixed; z-index: 3000; left: 0; top: 0;
+    width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center; align-items: center; backdrop-filter: blur(5px);
+    cursor: zoom-out;
+}
+#customPhotoZoomModal img {
+    max-width: 85vw; max-height: 85vh; border-radius: 12px; object-fit: contain;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.2);
+}
+
     </style>
 </head>
 <body>
@@ -405,7 +418,7 @@
                 <div style="grid-column: 1 / -1; width: 100%; padding: 50px 20px; background: #fff; border-radius: 16px; text-align: center; border: 2px dashed #C17F6A; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
                     <div style="font-size: 45px; margin-bottom: 15px;">🦖❓</div>
                     <h3 style="color: #e63946; margin-bottom: 10px; font-size: 22px;">Rất tiếc, chưa có mẫu nào khớp từ khóa này!</h3>
-                    <p style="color: #666; font-size: 16px; margin-bottom: 0;">Đừng lo! Bạn có thể nhắn trực tiếp để xưởng lên bản vẽ 3D và in riêng theo yêu cầu nhé!</p>
+                    <p style="color: #666; font-size: 16px; margin-bottom: 0;">Đừng lo! Bạn có thể nhắn trực tiếp để - 🦖 Khủng Long Cười - lên bản vẽ 3D và in theo yêu cầu của riêng bạn nhé!</p>
                 </div>
             `;
         } else {
@@ -509,13 +522,16 @@
                 const bottomIframeBox = document.getElementById('bottomIframeBox');
                 
                 mainImg.src = imagesList[0];
-                mainImg.classList.remove('zoomed'); // Reset trạng thái zoom
                 bottomVideoContainer.style.display = 'none';
                 bottomIframeBox.innerHTML = '';
 
-                // Click vào ảnh chính để Bật/Tắt chế độ Zoom to hết cỡ
+                // Click vào ảnh chính để bật khung Zoom lớn độc lập
+                mainImg.style.cursor = "zoom-in";
                 mainImg.onclick = function() {
-                    this.classList.toggle('zoomed');
+                    const zoomModal = document.getElementById('customPhotoZoomModal');
+                    const zoomedImg = document.getElementById('zoomedModalImage');
+                    zoomedImg.src = this.src;
+                    zoomModal.style.display = 'flex';
                 };
 
                 document.getElementById('modalTitle').innerText = product.name;
@@ -549,28 +565,30 @@
                         }
                     }
 
-                    // Chèn danh sách ảnh nhỏ: Hover đổi ảnh nhanh + Click đổi ảnh và Zoom to hoành tráng
+                    // Chèn ảnh nhỏ: Hover đổi ảnh nhanh + Click để phóng to toàn màn hình xem chi tiết
                     imagesList.forEach((imgSrc, index) => {
                         const thumbImg = document.createElement('img');
                         thumbImg.src = imgSrc;
                         if(index === 0) thumbImg.classList.add('active'); 
 
-                        // 1. Trỏ chuột vào (Hover): Tự động đổi ảnh chính siêu nhanh, đưa về size chuẩn
+                        // 1. Trỏ chuột vào: Đổi ảnh chính mượt mà
                         thumbImg.onmouseover = function() {
                             mainImg.src = imgSrc;
-                            mainImg.classList.remove('zoomed');
                             document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
                             this.classList.add('active');
                         };
                         
-                        // 2. Click vào thumbnail: Đổi ảnh và KÍCH HOẠT ZOOM TO LUÔN
+                        // 2. Click vào thumbnail: Đổi ảnh chính VÀ mở luôn khung Zoom bự để soi
                         thumbImg.onclick = function() {
                             mainImg.src = imgSrc;
                             document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
                             this.classList.add('active');
                             
-                            // Phóng to hoành tráng
-                            mainImg.classList.add('zoomed');
+                            // Bật khung Zoom lớn độc lập
+                            const zoomModal = document.getElementById('customPhotoZoomModal');
+                            const zoomedImg = document.getElementById('zoomedModalImage');
+                            zoomedImg.src = imgSrc;
+                            zoomModal.style.display = 'flex';
                         };
 
                         thumbnailsContainer.appendChild(thumbImg);
@@ -649,5 +667,10 @@
     </div>
 </footer>
 
+<div id="customPhotoZoomModal" onclick="this.style.display='none'">
+    <span style="position: absolute; top: 20px; right: 30px; color: white; font-size: 45px; font-weight: bold; cursor: pointer;">&times;</span>
+    <img id="zoomedModalImage" src="" alt="Ảnh phóng to chi tiết">
+
+</div>
 </body>
 </html>
