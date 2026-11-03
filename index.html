@@ -238,10 +238,10 @@
         <div class="hero-text">
             <h1>THƯ GIÃN TÂM TRÍ - THỎA SỨC SÁNG TẠO</h1>
             <p>Trải nghiệm nghệ thuật DIY chữa lành, tự tay tạo đồ decor độc bản.</p>
-            <button class="btn-primary" onclick="document.getElementById('product-list').scrollIntoView({behavior: 'smooth'});">XEM SẢN PHẨM NGAY</button>
+            <button class="btn-primary" onclick="document.getElementById('product-list').scrollIntoView({behavior: 'smooth'});">XEM MẪU MÔ HÌNH NGAY</button>
             <div class="search-box-hero">
                 <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #888;">🔍</span>
-                <input type="text" id="searchInput" onkeyup="liveSearch()" placeholder="Hãy Gõ Bất Cứ Thứ Gì Bạn Thích Vào Đây ..(cute - đáng yêu..vv)">
+                <input type="text" id="searchInput" onkeyup="liveSearch()" placeholder="Tìm kiếm theo tên, mã (SP 001) hoặc giá tiền (189k)...">
             </div>
         </div>
     </div>
@@ -267,7 +267,7 @@
 
         <div class="custom-cta-box" style="padding: 20px 20px !important; margin: 20px auto !important;">
             <h2>Bạn chưa tìm thấy mẫu nào ưng ý sao?</h2>
-            <p>Đừng lo! Bạn lên ý tưởng — 🦖 <b>Khủng Long Cười - 🪴 Tiệm Decor 3D</b> sẽ biến ý tưởng đó thành mô hình 3D thực tế cho bạn!</p>
+            <p>Đừng lo! Bạn lên ý tưởng — 🦖 <b>Khủng Long Cười - 🪴 Tiệm Mô Hình 3D</b> sẽ biến ý tưởng đó thành mô hình 3D thực tế cho bạn!</p>
             <div class="cta-buttons" style="margin-top: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                 <a href="https://m.me/khunglongcuoi3d/" target="_blank" style="background: #0084FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Nhắn Messenger Ngay</a>
             </div>
@@ -304,7 +304,7 @@
         </div>
 </div> 
 
-    <!-- Modal (Popup Chi tiết sản phẩm mới - BỔ SUNG KHU VỰC VIDEO Ở ĐÁY) -->
+    <!-- Modal (Popup Chi tiết sản phẩm mới) -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-container">
             <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -360,7 +360,6 @@
                 const heroImg = document.querySelector('.hero img');
                 if(heroImg) heroImg.src = settings.hero_banner_img;
                 
-                window.ZALO_NUMBER = settings.zalo_number;
                 window.FB_PAGE = settings.facebook_page;
             })
             .catch(error => console.error("Lỗi tải settings:", error));
@@ -427,9 +426,9 @@
                                 <p class="price">${item.price}</p>
                                 <hr style="border: none; border-top: 1px dashed #444; margin: 10px 0;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #888; margin-bottom: 12px;">
-            <span>👁️ ${Math.floor(Math.random() * (500 - 150 + 1)) + 150} lượt xem</span>
-            <span style="color: #f39c12; font-weight: bold;">★ 5.0</span>
-        </div>
+                                    <span>👁️ ${Math.floor(Math.random() * (500 - 150 + 1)) + 150} lượt xem</span>
+                                    <span style="color: #f39c12; font-weight: bold;">★ 5.0</span>
+                                </div>
                                 <button class="btn-primary" style="width: 100%; padding: 10px; background-color: #b31515; color: #fed166; font-weight: bold; border: none; border-radius: 50px; cursor: pointer;" onclick="openModal(${item.id})"> CHI TIẾT SẢN PHẨM </button>
                             </div>
                         </div>
@@ -464,6 +463,7 @@
                       .replace(/đ/g, 'd').replace(/Đ/g, 'D');
         }
 
+        /* --- TÍNH NĂNG TÌM KIẾM TOÀN DIỆN (TÊN, MÃ, GIÁ TIỀN) --- */
         function liveSearch() {
             const searchInput = document.getElementById('searchInput');
             if (!searchInput) return;
@@ -476,8 +476,19 @@
             }
             
             const searchedData = productDatabase.filter(item => {
-                const itemName = removeVietnameseTones(item.name.toLowerCase());
-                return itemName.includes(keyword);
+                const itemName = removeVietnameseTones(item.name ? item.name.toLowerCase() : "");
+                const itemPrice = item.price ? removeVietnameseTones(String(item.price).toLowerCase()) : "";
+                const itemId = String(item.id);
+                const productCode = `sp ${itemId}`.toLowerCase();
+                const paddedCode = `sp ${itemId.padStart(3, '0')}`.toLowerCase();
+                const rawPaddedCode = itemId.padStart(3, '0');
+
+                return itemName.includes(keyword) || 
+                       itemPrice.includes(keyword) || 
+                       itemId.includes(keyword) || 
+                       rawPaddedCode.includes(keyword) || 
+                       productCode.includes(keyword) || 
+                       paddedCode.includes(keyword);
             });
             
             currentDisplayLimit = 8;
@@ -485,11 +496,11 @@
         }
 
         function getYouTubeID(url) {
-    if(!url) return null;
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
-}
+            if(!url) return null;
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
 
         const modal = document.getElementById("productModal");
         
@@ -572,18 +583,19 @@
                     });
                 }
 
-                const message = encodeURIComponent(`Chào shop, mình muốn đặt mẫu: ${product.name}`);
-                const zaloBtn = document.getElementById('modalZaloBtn');
-                if(zaloBtn) {
-                    zaloBtn.onclick = function() {
-                        window.open(`https://zalo.me/${window.ZALO_NUMBER || '0833333832'}?text=${message}`, '_blank');
-                    };
-                }
-
+                // XỬ LÝ NÚT FACEBOOK (TỰ ĐỘNG COPY THÔNG TIN & MỞ MESSENGER)
                 const fbBtn = document.getElementById('modalFbBtn');
                 if(fbBtn) {
                     fbBtn.onclick = function() {
-                        window.open(window.FB_PAGE || 'https://m.me/khunglongcuoi3d', '_blank');
+                        const productCode = `SP ${String(product.id).padStart(3, '0')}`;
+                        const textToCopy = `Chào shop, mình muốn tư vấn/đặt mua mẫu này:\n👉 Tên: ${product.name}\n👉 Mã: ${productCode}\n👉 Giá: ${product.price}`;
+
+                        navigator.clipboard.writeText(textToCopy).then(() => {
+                            alert("Đã lưu thông tin sản phẩm!\nKhi Messenger mở ra, bạn chỉ cần bấm DÁN (Paste) vào khung chat để gửi cho shop nhé.");
+                            window.open(window.FB_PAGE || 'https://m.me/khunglongcuoi3d', '_blank');
+                        }).catch(err => {
+                            window.open(window.FB_PAGE || 'https://m.me/khunglongcuoi3d', '_blank');
+                        });
                     };
                 }
 
@@ -640,5 +652,13 @@
     <span style="position: absolute; top: 20px; right: 30px; color: white; font-size: 45px; font-weight: bold; cursor: pointer;">&times;</span>
     <img id="zoomedModalImage" src="" alt="Ảnh phóng to chi tiết">
 </div>
+
+<!-- NÚT MESSENGER TRÔI NỔI GÓC DƯỚI PHẢI -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 15px;">
+    <a href="https://m.me/khunglongcuoi3d" target="_blank" title="Chat qua Messenger" style="width: 55px; height: 55px; background: #0084FF; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg" alt="Messenger" width="30" height="30">
+    </a>
+</div>
+
 </body>
 </html>
