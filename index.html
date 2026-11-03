@@ -437,6 +437,10 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                     const formattedId = String(item.id).padStart(3, '0');
                     const productCode = `SP ${formattedId}`;
 
+                    const priceHtml = (item.price && item.price.trim() !== "") 
+                        ? `<p class="price">${item.price}</p>` 
+                        : ``; 
+
                     productList.innerHTML += `
                         <div class="product-card">
                             <div class="img-container">
@@ -447,8 +451,7 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                             <div class="product-info" style="padding-top: 10px;">
                                 <div class="product-code">Mã: ${productCode}</div>
                                 <h3>${item.name}</h3>
-                                <!-- <p class="price">${item.price}</p> -->
-                                <p class="price" style="color: #888 !important; font-size: 14px;">Liên hệ để nhận báo giá</p>
+                                ${priceHtml}
                                 <hr style="border: none; border-top: 1px dashed #444; margin: 10px 0;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #888; margin-bottom: 12px;">
                                     <span>👁️ ${Math.floor(Math.random() * (500 - 150 + 1)) + 150} lượt xem</span>
@@ -556,12 +559,9 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                 const modalPriceEl = document.getElementById('modalPrice');
                 if (product.price && product.price.trim() !== "") {
                     modalPriceEl.innerText = product.price;
-                    modalPriceEl.style.fontSize = '22px'; // Kích thước chữ giá tiền
-                    modalPriceEl.style.color = '#e63946';
+                    modalPriceEl.style.display = "block"; // Hiện lại nếu có giá
                 } else {
-                    modalPriceEl.innerText = 'Vui lòng inbox để nhận giá tốt nhất';
-                    modalPriceEl.style.fontSize = '18px';
-                    modalPriceEl.style.color = '#888';
+                    modalPriceEl.style.display = "none"; // Ẩn tàng hình luôn nếu không có giá
                 }
 
                 const descContainer = document.querySelector('.modal-desc');
