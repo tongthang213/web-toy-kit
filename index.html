@@ -26,7 +26,12 @@
         .hero { 
             display: flex; gap: 40px; padding: 40px 5%; background-color: #121212; align-items: center; 
         }
-        .hero img { width: 55%; border-radius: 8px; object-fit: cover; }
+        .hero img { 
+    width: 55%; 
+    border-radius: 8px; 
+    object-fit: cover; 
+    transition: opacity 0.4s ease-in-out; 
+}
         .hero-text { width: 45%; }
         .hero-text h1 { color: #C17F6A; font-size: 32px; font-weight: bold; margin-bottom: 15px; line-height: 1.3; }
         .hero-text p { color: #E0E0E0; font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
@@ -358,7 +363,26 @@
                 if(heroDesc) heroDesc.innerText = settings.hero_desc;
                 
                 const heroImg = document.querySelector('.hero img');
-                if(heroImg) heroImg.src = settings.hero_banner_img;
+if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0) {
+    const bannerImages = settings.hero_banner_imgs;
+    let currentBannerIndex = 0;
+    
+    // Hiển thị ảnh đầu tiên ngay khi tải trang
+    heroImg.src = bannerImages[0];
+    
+    // Nếu có từ 2 ảnh trở lên thì thiết lập vòng lặp chạy tự động
+    if (bannerImages.length > 1) {
+        setInterval(() => {
+            heroImg.style.opacity = 0; // Làm mờ ảnh hiện tại
+            setTimeout(() => {
+                // Chuyển sang ảnh tiếp theo
+                currentBannerIndex = (currentBannerIndex + 1) % bannerImages.length;
+                heroImg.src = bannerImages[currentBannerIndex];
+                heroImg.style.opacity = 1; // Hiển thị ảnh mới
+            }, 400); // Đợi 0.4s cho khớp với hiệu ứng CSS
+        }, 3500); // 3.5 giây đổi ảnh một lần (sếp có thể tăng giảm số 3500 này)
+    }
+}
                 
                 window.FB_PAGE = settings.facebook_page;
             })
