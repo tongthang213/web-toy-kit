@@ -27,11 +27,11 @@
             display: flex; gap: 40px; padding: 40px 5%; background-color: #121212; align-items: center; 
         }
         .hero img { 
-    width: 55%; 
-    border-radius: 8px; 
-    object-fit: cover; 
-    transition: opacity 0.4s ease-in-out; 
-}
+            width: 55%; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            transition: opacity 0.4s ease-in-out; 
+        }
         .hero-text { width: 45%; }
         .hero-text h1 { color: #C17F6A; font-size: 32px; font-weight: bold; margin-bottom: 15px; line-height: 1.3; }
         .hero-text p { color: #E0E0E0; font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
@@ -447,7 +447,8 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                             <div class="product-info" style="padding-top: 10px;">
                                 <div class="product-code">Mã: ${productCode}</div>
                                 <h3>${item.name}</h3>
-                                <p class="price">${item.price}</p>
+                                <!-- <p class="price">${item.price}</p> -->
+                                <p class="price" style="color: #888 !important; font-size: 14px;">Liên hệ để nhận báo giá</p>
                                 <hr style="border: none; border-top: 1px dashed #444; margin: 10px 0;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #888; margin-bottom: 12px;">
                                     <span>👁️ ${Math.floor(Math.random() * (500 - 150 + 1)) + 150} lượt xem</span>
@@ -551,7 +552,17 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                 };
 
                 document.getElementById('modalTitle').innerText = product.name;
-                document.getElementById('modalPrice').innerText = product.price;
+
+                const modalPriceEl = document.getElementById('modalPrice');
+                if (product.price && product.price.trim() !== "") {
+                    modalPriceEl.innerText = product.price;
+                    modalPriceEl.style.fontSize = '22px'; // Kích thước chữ giá tiền
+                    modalPriceEl.style.color = '#e63946';
+                } else {
+                    modalPriceEl.innerText = 'Vui lòng inbox để nhận giá tốt nhất';
+                    modalPriceEl.style.fontSize = '18px';
+                    modalPriceEl.style.color = '#888';
+                }
 
                 const descContainer = document.querySelector('.modal-desc');
                 if (descContainer) {
@@ -612,7 +623,11 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                 if(fbBtn) {
                     fbBtn.onclick = function() {
                         const productCode = `SP ${String(product.id).padStart(3, '0')}`;
-                        const textToCopy = `Chào shop, mình muốn tư vấn/đặt mua mẫu này:\n👉 Tên: ${product.name}\n👉 Mã: ${productCode}\n👉 Giá: ${product.price}`;
+                        let textToCopy = `Chào shop, mình muốn tư vấn/đặt mua mẫu này:\n👉 Tên: ${product.name}\n👉 Mã: ${productCode}`;
+                        
+                        if (product.price && product.price.trim() !== "") {
+                            textToCopy += `\n👉 Giá: ${product.price}`;
+                        }
 
                         navigator.clipboard.writeText(textToCopy).then(() => {
                             alert("Đã lưu thông tin sản phẩm!\nKhi Messenger mở ra, bạn chỉ cần bấm DÁN (Paste) vào khung chat để gửi cho shop nhé.");
