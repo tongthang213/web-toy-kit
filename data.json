@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Goofy Series - SQUISHED TURTLE ( Rùa Ăn Gạch )",
+        "name": "Rùa Ăn Gạch Mắt Lác – Goofy Series (Squished Turtle)",
         "price": "",
         "video_url": "https://youtube.com/shorts/9jB8QykgJmc?feature=share",
         "img": "images/sp_1/0.1.JPG",
@@ -14,18 +14,6 @@
             "images/sp_1/4.JPG",
             "images/sp_1/5.JPG"
         ],
-        "desc": [
-            "Meet the Squished Turtle from the Goofy Series! 🐢🧱",
-            "This hilarious little turtle just took a red brick straight to the head! Featuring a winking eye on one side and a fun 360° movable goofy eye on the other, you can rotate its eye anytime to create endless silly expressions!",
-            "✨ Features:",
-            "- 360° Rotating Eye: Fun fidget feature to change its goofy expression.",
-            "- NO AMS Required: All parts (green body, brown shell, red brick, eyes, etc.) are separated by color for easy printing and simple assembly. (A drop of super glue is recommended for securing the brick and small parts).",
-            "- Great Desk Decor: Perfect as a funny gift, stress-relief desk buddy, or collectible alongside the Squished Pigeon!",
-            "🖨️ Print Tips:",
-            "- Material: PLA or PETG works great.",
-            "- Layer Height: 0.16mm - 0.20mm for smooth details.",
-            "- Infill: 10% - 15% (Gyroid recommended).",
-            "If you like this funny turtle, please leave a like, post a photo of your print, and consider giving a Boost! More goofy animals coming soon! 🚀"
-        ]
+        "desc": "<ul style=\"list-style: none; padding: 0; margin: 0; line-height: 1.65; color: #e2e8f0; font-size: 14px;\">\n  <li style=\"margin-bottom: 10px;\">\n    🐢 <strong style=\"color: #fbbf24;\">Bộ sản phẩm bao gồm:</strong> Đầy đủ các mảnh ghép <strong>tách màu sắc nét</strong> của <strong style=\"color: #ffffff;\">[Tên nhân vật]</strong> + phụ kiện <strong style=\"color: #ffffff;\">[Tên đạo cụ, vd: Gạch đỏ / Búa Thor]</strong>.\n  </li>\n  <li style=\"margin-bottom: 10px;\">\n    👀 <strong style=\"color: #fbbf24;\">Điểm nhấn cực lầy:</strong> Thiết kế <strong style=\"color: #38bdf8;\">mắt lác xoay 360°</strong> siêu hài hước, gạt nhẹ là đổi biểu cảm — món đồ chơi xả stress (fidget) cực cuốn tay.\n  </li>\n  <li style=\"margin-bottom: 10px;\">\n    🛡️ <strong style=\"color: #fbbf24;\">Chất liệu cao cấp:</strong> In 3D từ <strong style=\"color: #4ade80;\">nhựa PETG cao cấp</strong>, cầm chắc tay, màu sắc tươi tắn, bền bỉ chống va đập và an toàn cho cả trẻ nhỏ.\n  </li>\n  <li style=\"margin-bottom: 10px;\">\n    🧩 <strong style=\"color: #fbbf24;\">Trải nghiệm lắp ráp:</strong> Các chi tiết khớp nối chuẩn xác, dễ dàng <strong>tự tay lắp ráp (DIY)</strong> thư giãn hoặc nhờ <strong>shop lắp sẵn hoàn chỉnh</strong>.\n  </li>\n  <li style=\"margin-bottom: 10px;\">\n    🎁 <strong style=\"color: #fbbf24;\">Công dụng:</strong> Decor bàn làm việc, góc PC, kệ sách, taplo ô tô hoặc làm quà tặng <em>\"vô tri\"</em> cực chất cho bạn bè.\n  </li>\n  <li style=\"margin-top: 12px; padding: 10px 12px; background: rgba(251, 191, 36, 0.12); border-left: 3px solid #fbbf24; border-radius: 6px;\">\n    🔥 <strong style=\"color: #fbbf24;\">Ưu đãi Combo:</strong> Mua theo combo nhiều mẫu để nhận <strong style=\"color: #ffffff;\">giá siêu hời</strong> cùng quà tặng kèm (đế trưng bày / băng keo nano cố định).\n  </li>\n</ul>"
     }
 ]
