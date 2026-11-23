@@ -1,1 +1,31 @@
-[]
+[
+    {
+        "id": 1,
+        "name": "Goofy Series - SQUISHED TURTLE ( Rùa Ăn Gạch )",
+        "price": "",
+        "video_url": "https://youtube.com/shorts/9jB8QykgJmc?feature=share",
+        "img": "images/sp_1/0.1.JPG",
+        "images": [
+            "images/sp_1/0.1.JPG",
+            "images/sp_1/0.2.JPG",
+            "images/sp_1/1.jpg",
+            "images/sp_1/2.JPG",
+            "images/sp_1/3.JPG",
+            "images/sp_1/4.JPG",
+            "images/sp_1/5.JPG"
+        ],
+        "desc": [
+            "Meet the Squished Turtle from the Goofy Series! 🐢🧱",
+            "This hilarious little turtle just took a red brick straight to the head! Featuring a winking eye on one side and a fun 360° movable goofy eye on the other, you can rotate its eye anytime to create endless silly expressions!",
+            "✨ Features:",
+            "- 360° Rotating Eye: Fun fidget feature to change its goofy expression.",
+            "- NO AMS Required: All parts (green body, brown shell, red brick, eyes, etc.) are separated by color for easy printing and simple assembly. (A drop of super glue is recommended for securing the brick and small parts).",
+            "- Great Desk Decor: Perfect as a funny gift, stress-relief desk buddy, or collectible alongside the Squished Pigeon!",
+            "🖨️ Print Tips:",
+            "- Material: PLA or PETG works great.",
+            "- Layer Height: 0.16mm - 0.20mm for smooth details.",
+            "- Infill: 10% - 15% (Gyroid recommended).",
+            "If you like this funny turtle, please leave a like, post a photo of your print, and consider giving a Boost! More goofy animals coming soon! 🚀"
+        ]
+    }
+]
