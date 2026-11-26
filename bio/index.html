@@ -16,8 +16,8 @@
 
     body {
       font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #fdf1e7;
-      color: #634a3e;
+      background-color: #fdf7f7;
+      color: #4a2020;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -31,21 +31,22 @@
     }
 
     .avatar {
-      width: 112px;
-      height: 112px;
+      width: 114px;
+      height: 114px;
       border-radius: 50%;
       object-fit: cover;
       background: #ffffff;
       border: 4px solid #ffffff;
-      box-shadow: 0 6px 18px rgba(99, 74, 62, 0.14);
-      margin-bottom: 14px;
+      box-shadow: 0 6px 18px rgba(176, 48, 48, 0.16);
+      display: block;
+      margin: 0 auto 14px;
     }
 
     h1 {
       font-family: 'Merriweather', Georgia, serif;
       font-size: 26px;
       font-weight: 700;
-      color: #634a3e;
+      color: #a62626;
       margin-bottom: 12px;
     }
 
@@ -58,16 +59,16 @@
     }
 
     .social-row a {
-      color: #634a3e;
+      color: #b83b3b;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.15s ease, opacity 0.15s ease;
+      transition: transform 0.15s ease, color 0.15s ease;
     }
 
     .social-row a:hover {
       transform: translateY(-2px);
-      opacity: 0.8;
+      color: #8c1d1d;
     }
 
     .social-row svg {
@@ -77,13 +78,14 @@
     }
 
     .card {
-      background-color: #bde2cf;
-      border-radius: 28px;
+      background-color: #f7e1e1;
+      border: 1.5px solid #eccbcb;
+      border-radius: 26px;
       padding: 18px 14px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      box-shadow: 0 8px 24px rgba(99, 74, 62, 0.08);
+      gap: 13px;
+      box-shadow: 0 8px 22px rgba(166, 38, 38, 0.08);
     }
 
     .btn {
@@ -91,35 +93,35 @@
       align-items: center;
       gap: 14px;
       text-decoration: none;
-      background-color: #d6a991;
-      color: #5a4035;
+      background-color: #ffffff;
+      color: #2e1515;
       padding: 13px 16px;
       border-radius: 14px;
-      border: 2px solid #745648;
-      box-shadow: 0 4px 0 #745648;
+      border: 2px solid #c96a6a;
+      box-shadow: 0 4px 0 #c96a6a;
       transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease;
       text-align: left;
     }
 
     .btn:hover {
-      background-color: #ddb49e;
+      background-color: #fff8f8;
     }
 
     .btn:active {
       transform: translateY(3px);
-      box-shadow: 0 1px 0 #745648;
+      box-shadow: 0 1px 0 #c96a6a;
     }
 
     .icon-box {
       width: 42px;
       height: 42px;
       border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.45);
+      background-color: #fcebeb;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      color: #5a4035;
+      color: #c0392b;
     }
 
     .icon-box svg {
@@ -138,25 +140,25 @@
       font-size: 15px;
       font-weight: 700;
       line-height: 1.3;
+      color: #2e1515;
     }
 
     .sub {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 500;
-      color: #6b4e40;
+      color: #785959;
       margin-top: 2px;
     }
 
     footer {
       margin-top: 28px;
       font-size: 12px;
-      color: #8c7063;
+      color: #9e7878;
     }
   </style>
 </head>
 <body>
   <main class="container">
-    <!-- Đổi avatar.jpg thành đường dẫn ảnh logo Khủng Long Cười trên web của bạn -->
     <img class="avatar" src="avatar.jpg" alt="Khung Long Cuoi" />
 
     <h1>Khung Long Cuoi</h1>
