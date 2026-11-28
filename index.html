@@ -488,7 +488,7 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                             </div>
                             <div class="product-info" style="padding-top: 10px;">
                                 <div class="product-code">Mã: ${productCode}</div>
-                                <h3 title="${item.name}">${item.name}</h3>
+                                <h3 title="${item.name}">${item.name.includes('–') ? item.name.split('–')[0] + '– <span style="color:#f28a1c">' + item.name.split('–').slice(1).join('–') + '</span>' : item.name}</h3>
                                 <!-- <p class="price">${item.price}</p> -->
                                 <p class="price" style="color: #888 !important; font-size: 14px;">Liên hệ để nhận báo giá</p>
                                 <hr style="border: none; border-top: 1px dashed #444; margin: 10px 0;">
