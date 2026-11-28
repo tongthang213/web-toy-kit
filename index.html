@@ -70,7 +70,13 @@
             aspect-ratio: 3 / 4 !important; object-fit: cover !important;   
             border-radius: 8px; margin-bottom: 15px; background-color: #121212;
         }
-        .product-card h3 { font-size: 15px; font-weight: bold; color: #E0E0E0; margin-bottom: 8px; }
+        .product-card h3 {
+            font-size: 15px; font-weight: bold; color: #E0E0E0; margin-bottom: 8px;
+            line-height: 1.4; height: calc(1.4em * 3);          /* luôn cao đúng 3 dòng */
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .product-card .product-info { display: flex; flex-direction: column; flex: 1; }
+        .product-card .product-info .btn-primary { margin-top: auto; }
         .product-card .price { font-weight: bold; color: #e63946 !important; font-size: 16px; margin-bottom: 15px; }
         .product-card .btn-primary {
             width: 100%; margin-top: auto; border-radius: 8px;
@@ -466,7 +472,7 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                             </div>
                             <div class="product-info" style="padding-top: 10px;">
                                 <div class="product-code">Mã: ${productCode}</div>
-                                <h3>${item.name}</h3>
+                                <h3 title="${item.name}">${item.name}</h3>
                                 <!-- <p class="price">${item.price}</p> -->
                                 <p class="price" style="color: #888 !important; font-size: 14px;">Liên hệ để nhận báo giá</p>
                                 <hr style="border: none; border-top: 1px dashed #444; margin: 10px 0;">
