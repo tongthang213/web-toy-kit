@@ -179,7 +179,28 @@
         
         .modal-gallery { width: 50%; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
         
-        .modal-main-img-box { width: 100%; height: 380px; }
+        .modal-main-img-box { width: 100%; height: 380px; position: relative; }
+        /* Mũi tên xem ảnh */
+        .gal-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+            width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25);
+            background: rgba(0,0,0,.55); color: #fff; font-size: 22px; line-height: 1; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: background .2s;
+        }
+        .gal-arrow:hover { background: #C17F6A; }
+        .gal-arrow.prev { left: 10px; } .gal-arrow.next { right: 10px; }
+        .gal-arrow.hidden { display: none; }
+        #customPhotoZoomModal .gal-arrow { position: fixed; width: 56px; height: 56px; font-size: 30px; }
+        #customPhotoZoomModal .gal-arrow.prev { left: 24px; } #customPhotoZoomModal .gal-arrow.next { right: 24px; }
+        .zoom-counter {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            color: #fff; background: rgba(0,0,0,.55); padding: 4px 14px; border-radius: 14px; font-size: 14px;
+        }
+        @media screen and (max-width: 768px) {
+            .gal-arrow { width: 36px; height: 36px; font-size: 18px; }
+            #customPhotoZoomModal .gal-arrow { width: 44px; height: 44px; font-size: 24px; }
+            #customPhotoZoomModal .gal-arrow.prev { left: 8px; } #customPhotoZoomModal .gal-arrow.next { right: 8px; }
+        }
         .modal-main-img-box img { 
             width: 100%; height: 100%; border-radius: 10px; object-fit: contain; 
             background-color: #121212; border: 1px solid #333; display: block;
@@ -343,7 +364,9 @@
                 
                 <div class="modal-gallery">
                     <div class="modal-main-img-box">
+                        <button type="button" class="gal-arrow prev" aria-label="Ảnh trước" onclick="event.stopPropagation(); stepImage(-1)">‹</button>
                         <img id="mainModalImg" src="" alt="Ảnh sản phẩm chính">
+                        <button type="button" class="gal-arrow next" aria-label="Ảnh sau" onclick="event.stopPropagation(); stepImage(1)">›</button>
                     </div>
                     
                     <div class="modal-thumbnails" id="modalThumbnails">
@@ -580,17 +603,13 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                 const bottomVideoContainer = document.getElementById('bottomVideoContainer');
                 const bottomIframeBox = document.getElementById('bottomIframeBox');
                 
+                setGallery(imagesList);
                 mainImg.src = imagesList[0];
                 bottomVideoContainer.style.display = 'none';
                 bottomIframeBox.innerHTML = '';
 
                 mainImg.style.cursor = "zoom-in";
-                mainImg.onclick = function() {
-                    const zoomModal = document.getElementById('customPhotoZoomModal');
-                    const zoomedImg = document.getElementById('zoomedModalImage');
-                    zoomedImg.src = this.src;
-                    zoomModal.style.display = 'flex';
-                };
+                mainImg.onclick = function() { openZoom(); };
 
                 document.getElementById('modalTitle').innerText = product.name;
 
@@ -638,22 +657,8 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
                         thumbImg.src = imgSrc;
                         if(index === 0) thumbImg.classList.add('active'); 
 
-                        thumbImg.onmouseover = function() {
-                            mainImg.src = imgSrc;
-                            document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
-                            this.classList.add('active');
-                        };
-                        
-                        thumbImg.onclick = function() {
-                            mainImg.src = imgSrc;
-                            document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
-                            this.classList.add('active');
-                            
-                            const zoomModal = document.getElementById('customPhotoZoomModal');
-                            const zoomedImg = document.getElementById('zoomedModalImage');
-                            zoomedImg.src = imgSrc;
-                            zoomModal.style.display = 'flex';
-                        };
+                        thumbImg.onmouseover = function() { showImage(index); };
+                        thumbImg.onclick = function() { showImage(index); openZoom(); };
 
                         thumbnailsContainer.appendChild(thumbImg);
                     });
@@ -745,10 +750,68 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
     </div>
 </footer>
 
-<div id="customPhotoZoomModal" onclick="this.style.display='none'">
+<div id="customPhotoZoomModal" onclick="closeZoom()">
     <span style="position: absolute; top: 20px; right: 30px; color: white; font-size: 45px; font-weight: bold; cursor: pointer;">&times;</span>
-    <img id="zoomedModalImage" src="" alt="Ảnh phóng to chi tiết">
+    <button type="button" class="gal-arrow prev" aria-label="Ảnh trước" onclick="event.stopPropagation(); stepImage(-1)">‹</button>
+    <img id="zoomedModalImage" src="" alt="Ảnh phóng to chi tiết" onclick="event.stopPropagation(); stepImage(1)">
+    <button type="button" class="gal-arrow next" aria-label="Ảnh sau" onclick="event.stopPropagation(); stepImage(1)">›</button>
+    <div class="zoom-counter" id="zoomCounter"></div>
 </div>
+
+<script>
+    /* ===== THƯ VIỆN ẢNH: mũi tên, phím ← →, vuốt trên điện thoại ===== */
+    let galleryImages = [];
+    let galleryIndex = 0;
+
+    function showImage(i) {
+        if (!galleryImages.length) return;
+        galleryIndex = (i + galleryImages.length) % galleryImages.length;
+        const src = galleryImages[galleryIndex];
+        document.getElementById('mainModalImg').src = src;
+        document.querySelectorAll('.modal-thumbnails img').forEach((t, k) => t.classList.toggle('active', k === galleryIndex));
+        document.getElementById('zoomedModalImage').src = src;
+        document.getElementById('zoomCounter').textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
+        const active = document.querySelector('.modal-thumbnails img.active');
+        if (active) active.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+    }
+    function stepImage(d) { showImage(galleryIndex + d); }
+    function openZoom() {
+        showImage(galleryIndex);
+        document.getElementById('customPhotoZoomModal').style.display = 'flex';
+    }
+    function closeZoom() { document.getElementById('customPhotoZoomModal').style.display = 'none'; }
+    function setGallery(list) {
+        galleryImages = list || [];
+        galleryIndex = 0;
+        const many = galleryImages.length > 1;
+        document.querySelectorAll('.gal-arrow').forEach(el => el.classList.toggle('hidden', !many));
+        document.getElementById('zoomCounter').style.display = many ? '' : 'none';
+    }
+
+    // Phím ← → để chuyển ảnh, Esc để đóng
+    document.addEventListener('keydown', e => {
+        const zoomOpen = document.getElementById('customPhotoZoomModal').style.display === 'flex';
+        const modalOpen = document.getElementById('productModal').style.display === 'flex';
+        if (!zoomOpen && !modalOpen) return;
+        if (e.key === 'ArrowLeft') stepImage(-1);
+        else if (e.key === 'ArrowRight') stepImage(1);
+        else if (e.key === 'Escape') { zoomOpen ? closeZoom() : closeModal(); }
+    });
+
+    // Vuốt trái/phải trên điện thoại
+    function enableSwipe(el) {
+        let x0 = null;
+        el.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+        el.addEventListener('touchend', e => {
+            if (x0 === null) return;
+            const dx = e.changedTouches[0].clientX - x0;
+            if (Math.abs(dx) > 40) stepImage(dx < 0 ? 1 : -1);
+            x0 = null;
+        });
+    }
+    enableSwipe(document.getElementById('mainModalImg'));
+    enableSwipe(document.getElementById('zoomedModalImage'));
+</script>
 
 <!-- NÚT MESSENGER TRÔI NỔI GÓC DƯỚI PHẢI -->
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 15px;">
