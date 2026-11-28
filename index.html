@@ -597,13 +597,13 @@ if (heroImg && settings.hero_banner_imgs && settings.hero_banner_imgs.length > 0
 
                 const modalPriceEl = document.getElementById('modalPrice');
                 if (product.price && product.price.trim() !== "") {
+                    modalPriceEl.style.display = '';
                     modalPriceEl.innerText = product.price;
                     modalPriceEl.style.fontSize = '22px'; // Kích thước chữ giá tiền
                     modalPriceEl.style.color = '#e63946';
                 } else {
-                    modalPriceEl.innerText = 'Vui lòng inbox để nhận giá tốt nhất';
-                    modalPriceEl.style.fontSize = '18px';
-                    modalPriceEl.style.color = '#888';
+                    modalPriceEl.innerText = '';
+                    modalPriceEl.style.display = 'none';   // không có giá thì ẩn hẳn
                 }
 
                 const descContainer = document.querySelector('.modal-desc');
